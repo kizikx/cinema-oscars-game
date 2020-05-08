@@ -1,0 +1,19 @@
+{
+  "name": "cinema-oscars-game",
+  "version": "1.0.0",
+  "description": "This is a cinema oscars game server",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js"
+  },
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.6",
+    "mongoose": "^5.9.10",
+    "nodemon": "^2.0.3"
+  }
+}
