@@ -2,7 +2,8 @@ const app = require('express')();
 const bodyParser = require('body-parser');
 let serverPort = 8080;
 
-let mongoUrl = 'MYCLUSTER';
+require('dotenv').config()
+let mongoUrl = process.env.MONGO_SECRET;
 
 require('./models/categoryModel');
 require('./models/gameModel');
