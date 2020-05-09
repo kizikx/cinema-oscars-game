@@ -40,18 +40,18 @@ module.exports.getGameById = (req, res) => {
     .then(game => {
         if(!game) {
             return res.status(404).send({
-                message: "Game not found with id " + req.params.gameId
+                message: "Game not found with id " + req.params.id
             });            
         }
         res.send(game);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Game not found with id " + req.params.gameId
+                message: "Game not found with id " + req.params.id
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving game with id " + req.params.gameId
+            message: "Error retrieving game with id " + req.params.id
         });
     });
 };
