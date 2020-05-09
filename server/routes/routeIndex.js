@@ -1,27 +1,33 @@
 module.exports = (app) => {
-    const partieController = require('../controllers/partieController');
+    const gameController = require('../controllers/gameController');
+    const playerController = require('../controllers/playerController');
+    const categoryController = require('../controllers/categoryController');
+    const movieController = require('../controllers/movieController');
 
+    app.post('/game', gameController.createGame);
 
-    app.post('/', partieController.createGame);
+    app.get('/game', gameController.getGame);
 
-    app.patch('/', partieController.updateGame);
-    
-    app.post('/player', partieController.createPlayer);
+    app.patch('/game/:id', gameController.updateGame);
 
-    app.patch('/player/:id', partieController.updatePlayer);
+    app.get('/game/:id', gameController.getGameById);
+    /*
+    app.post('/player', playerController.createPlayer);
 
-    app.post('/category', partieController.createCategory);
+    app.patch('/player/:id', playerController.updatePlayer);
 
-    app.get('/category', partieController.getCategories);
+    app.post('/category', categoryController.createCategory);
 
-    app.get('/category/:id', partieController.getCategoryById);
+    app.get('/category', categoryController.getCategories);
 
-    app.delete('/category/:id', partieController.deleteCategory);
+    app.get('/category/:id', categoryController.getCategoryById);
 
-    app.post('/movie', partieController.createMovie);
+    app.delete('/category/:id', categoryController.deleteCategory);
 
-    app.get('/movie', partieController.getMovies);
+    app.post('/movie', movieController.createMovie);
 
-    app.get('/movie/:id', partieController.getMovieById);
+    app.get('/movie', movieController.getMovies);
+
+    app.get('/movie/:id', movieController.getMovieById);*/
 
 };

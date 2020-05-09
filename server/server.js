@@ -4,7 +4,11 @@ let serverPort = 8080;
 
 let mongoUrl = 'MYCLUSTER';
 
-require('./models/shoeModel');
+require('./models/categoryModel');
+require('./models/gameModel');
+require('./models/movieModel');
+require('./models/playerModel');
+require('./models/voteModel');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -23,7 +27,7 @@ app.get('/', (req, res) => {
   res.json({"message": "This is the oscar game"});
 });
 
-require('./routes/shoe') (app);
+require('./routes/routeIndex') (app);
 
 app.listen(serverPort, () => {
   console.log("Server listening on " + serverPort);
