@@ -106,25 +106,3 @@ module.exports.addCategory = (req, res) => {
       })
     })
 };
-
-// delete a player
-module.exports.deletePlayer = (req, res) => {
-    Player.findOneAndDelete({_id:req.params.playerId})
-    .then(player => {
-        if(!player) {
-            return res.status(404).send({
-                message: "Player not found with id " + req.params.playerId
-            });
-        }
-        res.send({message: "Player deleted successfully!"});
-    }).catch(err => {
-        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
-            return res.status(404).send({
-                message: "Player not found with id " + req.params.playerId
-            });                
-        }
-        return res.status(500).send({
-            message: "Could not delete player with id " + req.params.playerId
-        });
-    });
-  };

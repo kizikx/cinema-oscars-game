@@ -9,10 +9,10 @@ let MovieSchema = new Schema(
     category: {type: String, required: true},
     duration: {type: String, required: true},
     country: {type: String, required: true},
-    actors: [{type: {
+    actors: [{
       name : {type: String, required: true},
       male : {type: Boolean, required: true}
-      }, required: true}],
+      }],
     description: {type: String, required: true},
     gameId: {type: String, required: true}
   }

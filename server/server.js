@@ -5,7 +5,6 @@ let serverPort = 8080;
 require('dotenv').config()
 let mongoUrl = process.env.MONGO_SECRET;
 
-require('./models/categoryModel');
 require('./models/gameModel');
 require('./models/movieModel');
 require('./models/playerModel');

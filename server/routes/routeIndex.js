@@ -12,7 +12,7 @@ module.exports = (app) => {
 
     app.get('/game/:gameId', gameController.getGameById);
 
-    app.post('/game/:gameId/category', categoryController.addCategory);
+   // app.post('/game/:gameId/category', categoryController.addCategory);
     
     app.post('/game/:gameId/player', playerController.createPlayer);
 
