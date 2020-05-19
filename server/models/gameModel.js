@@ -5,9 +5,11 @@ let Schema = mongoose.Schema;
 
 let GameSchema = new Schema(
   {
-    gameId: {type: String, required: true, unique: true},
     players: [String],
-    categories: [String],
+    categories: [{
+      name: {type: String},
+      description: {type: String}
+    }],
     ongoing: {type: Boolean, required: true}
   }
 );

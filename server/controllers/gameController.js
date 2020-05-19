@@ -10,9 +10,7 @@ module.exports.createGame = async(req, res) => {
             message: "Game content can not be empty"
         });
     }
-    let gameId = Math.random().toString(36).substr(2, 9);
     const game = new Game({
-      gameId: generateGameId(),
       players: req.body.players,
       catagories: req.body.catagories,
       ongoing: true
@@ -28,36 +26,31 @@ module.exports.createGame = async(req, res) => {
     });
 };
 
-function generateGameId(){
-    let gameId = Math.random().toString(36).substr(2, 9);
-    return gameId;
-}
-
 // get a game by id
 module.exports.getGameById = (req, res) => {
     Game.findOne(
-      {gameId:req.params.gameId})
+      {_id:req.params.gameId})
     .then(game => {
         if(!game) {
             return res.status(404).send({
-                message: "Game not found with id " + req.params.id
+                message: "Game not found with id " + req.params.gameId
             });            
         }
         res.send(game);
     }).catch(err => {
         if(err.kind === 'ObjectId') {
             return res.status(404).send({
-                message: "Game not found with id " + req.params.id
+                message: "Game not found with id " + req.params.gameId
             });                
         }
         return res.status(500).send({
-            message: "Error retrieving game with id " + req.params.id
+            message: "Error retrieving game with id " + req.params.gameId
         });
     });
 };
   
   //get all games
-module.exports.getGame = (req, res) => {
+module.exports.getGames = (req, res) => {
     Game.find()
     .then(game => {
         res.send(game);
@@ -68,7 +61,6 @@ module.exports.getGame = (req, res) => {
     });
 };
 
-//update a shoe
 module.exports.updateGame = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -76,7 +68,7 @@ module.exports.updateGame = (req, res) => {
         })
     }
   
-    Game.findOne({gameId: req.params.id}, (err, foundObject) => {
+    Game.findOne({_id: req.params.gameId}, (err, foundObject) => {
       if (req.body.ongoing !== undefined) {
         foundObject.ongoing = req.body.ongoing;
       }
@@ -91,3 +83,48 @@ module.exports.updateGame = (req, res) => {
       })
     })
 };
+
+module.exports.addCategory = (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: "Game content can not be empty"
+        })
+    }
+  
+    Game.findOne({_id: req.params.gameId}, (err, foundObject) => {
+      if (req.body.catagories !== undefined) {
+        foundObject.catagories.push(req.body.catagories);
+      }
+      foundObject.save((err, updatedObject) => {
+          if (err) {
+              res.status(400).send({
+                  erreur: err.message
+              })
+          } else {
+              res.status(200).send(updatedObject)
+          }
+      })
+    })
+};
+
+// delete a player
+module.exports.deletePlayer = (req, res) => {
+    Player.findOneAndDelete({_id:req.params.playerId})
+    .then(player => {
+        if(!player) {
+            return res.status(404).send({
+                message: "Player not found with id " + req.params.playerId
+            });
+        }
+        res.send({message: "Player deleted successfully!"});
+    }).catch(err => {
+        if(err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "Player not found with id " + req.params.playerId
+            });                
+        }
+        return res.status(500).send({
+            message: "Could not delete player with id " + req.params.playerId
+        });
+    });
+  };

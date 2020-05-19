@@ -14,7 +14,7 @@ let MovieSchema = new Schema(
       male : {type: Boolean, required: true}
       }, required: true}],
     description: {type: String, required: true},
-    playerId: {type: String, required: true}
+    gameId: {type: String, required: true}
   }
 );
 

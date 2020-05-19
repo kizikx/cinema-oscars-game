@@ -6,28 +6,35 @@ module.exports = (app) => {
 
     app.post('/game', gameController.createGame);
 
-    app.get('/game', gameController.getGame);
+    app.get('/game', gameController.getGames);
 
-    app.patch('/game/:id', gameController.updateGame);
+    app.patch('/game/:gameId', gameController.updateGame);
 
-    app.get('/game/:id', gameController.getGameById);
-    /*
-    app.post('/player', playerController.createPlayer);
+    app.get('/game/:gameId', gameController.getGameById);
 
-    app.patch('/player/:id', playerController.updatePlayer);
+    app.post('/game/:gameId/category', categoryController.addCategory);
+    
+    app.post('/game/:gameId/player', playerController.createPlayer);
 
-    app.post('/category', categoryController.createCategory);
+    app.patch('/game/:gameId/player/:id', playerController.updatePlayer);
+
+    app.delete('/game/:gameId/player/:id', playerController.deletePlayer);
+
+    app.post('/game/:gameId/movie', movieController.createMovie);
+
+    app.get('/game/:gameId/movie', movieController.getMovies);
+
+    app.get('/game/:gameId/movie/:movieId', movieController.getMovieById);
+
+    /*app.post('/game/:gameId/vote', movieController.createVote);
+
+    app.get('/game/:gameId/vote', movieController.getVotes);
+
+    app.get('/game/:gameId/vote/:voteId', movieController.getVoteById);
 
     app.get('/category', categoryController.getCategories);
 
     app.get('/category/:id', categoryController.getCategoryById);
 
-    app.delete('/category/:id', categoryController.deleteCategory);
-
-    app.post('/movie', movieController.createMovie);
-
-    app.get('/movie', movieController.getMovies);
-
-    app.get('/movie/:id', movieController.getMovieById);*/
-
+    app.delete('/category/:id', categoryController.deleteCategory);*/
 };
