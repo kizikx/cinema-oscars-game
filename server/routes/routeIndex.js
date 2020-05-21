@@ -13,7 +13,7 @@ module.exports = (app) => {
     
     app.post('/game/:gameId/player', playerController.createPlayer);
 
-    app.post('/game/:gameId/player', playerController.getGamePlayers);
+    app.get('/game/:gameId/player', playerController.getGamePlayers);
 
     app.patch('/game/:gameId/player/:id', playerController.updatePlayer);
 

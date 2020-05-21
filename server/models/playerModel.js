@@ -7,7 +7,10 @@ let PlayerSchema = new Schema(
     name: {type: String, required: true},
     admin: {type: Boolean, required: true},
     gameId: {type: String, required: true},
-    category: {type: String}
+    category: {
+      name: {type: String},
+      description: {type: String}
+    },
   }
 );
 
