@@ -92,4 +92,17 @@ module.exports.deletePlayer = (req, res) => {
             message: "Could not delete player with id " + req.params.playerId
         });
     });
-  };
+};
+
+  //get all games
+module.exports.getGamePlayers = (req, res) => {
+    Player.find(
+        {gameId:req.params.gameId})
+    .then(player => {
+        res.send(player);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving votes."
+        });
+    });
+};
