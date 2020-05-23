@@ -11,6 +11,12 @@ import { MovieM } from '../shared/models/movie-m';
 })
 export class MovieService {
   private readonly route = Routes.getApiRoute(Routes.movie);
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'mon-jeton'
+    })
+  };
 
   constructor(
     private readonly http: HttpClient) { }
@@ -20,5 +26,12 @@ export class MovieService {
     .pipe(
       map(data => data.map(item => new MovieM(item)))
     );
+  }
+
+  public addMovie(movie : MovieM):Observable<MovieM>{
+    return this.http.post<MovieM>(this.route, movie, this.httpOptions)
+   .pipe(
+     map(item => new MovieM(item))
+   );
   }
 }
