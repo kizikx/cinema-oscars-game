@@ -13,8 +13,7 @@ export class MovieService {
   private readonly route = Routes.getApiRoute(Routes.movie);
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'mon-jeton'
+      'Content-Type':  'application/json'
     })
   };
 

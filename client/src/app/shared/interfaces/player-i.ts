@@ -1,6 +1,8 @@
+import { CategorieI } from './categorie-i';
+
 export interface PlayerI {
   name : string,
   admin : boolean,
   gameId : string,
-  categoriesId : string
+  category : CategorieI
 }

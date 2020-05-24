@@ -2,7 +2,6 @@ import { CategorieM } from './categorie-m'
 import { GameI } from '../interfaces/game-i';
 
 export class GameM implements GameI{
-  players : string;
   categories : CategorieM;
   onGoing : boolean;
 
