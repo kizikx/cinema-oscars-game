@@ -6,21 +6,21 @@ module.exports.createVote = async(req, res) => {
     console.log(req.body);
     if(!req.body) {
         return res.status(400).send({
-            message: "Game content can not be empty"
+            message: "vote content can not be empty"
         });
     }
-    const player = new Player({
+    const vote = new Vote({
       name: req.body.name,
-      admin: req.body.catagories,
+      playerId: req.params.playerId,
       gameId: req.params.gameId
     });
   
-    player.save()
+    vote.save()
     .then(data => {
         res.send(data);
     }).catch(err => {
         res.status(500).send({
-            message: err.message || "Some error occurred while creating the player."
+            message: err.message || "Some error occurred while creating the vote."
         });
     });
 };
