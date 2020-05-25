@@ -2,6 +2,7 @@ module.exports = (app) => {
     const gameController = require('../controllers/gameController');
     const playerController = require('../controllers/playerController');
     const movieController = require('../controllers/movieController');
+    const voteController = require('../controllers/voteController');
 
     app.post('/game', gameController.createGame);
 
@@ -25,9 +26,9 @@ module.exports = (app) => {
 
     app.get('/game/:gameId/movie/:movieId', movieController.getMovieById);
 
-    app.post('/game/:gameId/vote', movieController.createVote);
+    app.post('/game/:gameId/vote', voteController.createVote);
 
-    app.get('/game/:gameId/vote', movieController.getVotes);
+    app.get('/game/:gameId/vote', voteController.getVotes);
 
-    app.get('/game/:gameId/vote/:voteId', movieController.getVoteById);
+    app.get('/game/:gameId/vote/:voteId', voteController.getVoteById);
 };
