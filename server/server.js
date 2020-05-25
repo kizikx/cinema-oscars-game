@@ -12,6 +12,12 @@ require('./models/voteModel');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(function(request, response, next) { 
+  response.header("Access-Control-Allow-Origin", "*");
+  response.header("Access-Control-Allow-Headers", "*");
+  response.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE");
+  next();
+});
 
 const mongoose = require('mongoose');
 
