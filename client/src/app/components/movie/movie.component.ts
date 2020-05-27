@@ -42,7 +42,7 @@ export class MovieComponent implements OnInit {
     // this.getMovie();
   }
 
-  public getMovie(){
+  public loadMovie(){
     this.getMovieSubscription = this.movieServ
     .getMovie()
     .subscribe(data => {

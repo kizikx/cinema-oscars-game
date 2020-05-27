@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AccueilComponent } from './components/accueil/accueil.component';
+import { VoteComponent } from './components/vote/vote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieComponent,
-    AccueilComponent
+    AccueilComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,
