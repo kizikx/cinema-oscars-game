@@ -1,1 +1,8 @@
-<app-movie></app-movie>
+<!-- <app-liste-joueurs></app-liste-joueurs> -->
+<h3>Catégories à exclure</h3>
+<ng-container *ngFor="let categorie of categories">
+  <div>
+    <mat-checkbox>{{categorie}}</mat-checkbox>
+  </div>
+</ng-container>
+<mat-checkbox>Exemple</mat-checkbox>

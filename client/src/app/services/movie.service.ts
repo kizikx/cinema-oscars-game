@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { MovieM } from '../shared/models/movie-m';
+import { CategorieM } from '../shared/models/categorie-m';
 
 @Injectable({
   providedIn: 'root'
