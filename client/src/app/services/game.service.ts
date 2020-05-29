@@ -33,4 +33,11 @@ export class GameService {
       map(item => new GameM(item))
     );
   }
+
+  public getCategories(idGame : string): Observable<GameM[]> {
+    return this.http.get<GameM[]>(this.route+idGame)
+    .pipe(
+      map(data => data.map(item => new GameM(item)))
+    );
+  }
 }

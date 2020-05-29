@@ -11,6 +11,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChoixJoueurComponent } from './components/choix-joueur/choix-joueur.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ListeGamesComponent } from './components/liste-games/liste-games.component';
+import { GameComponent } from './components/game/game.component';
 
 
 @NgModule({
@@ -19,14 +21,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MovieComponent,
     AccueilComponent,
     VoteComponent,
-    ChoixJoueurComponent
+    ChoixJoueurComponent,
+    ListeGamesComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -33,13 +33,10 @@ export class MovieComponent implements OnInit {
 
   constructor(
     private readonly movieServ : MovieService,
-    private readonly gameServ : GameService,
     private readonly cdRef : ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    // this.ajoutMovie(this.mockMovie);
-    // this.getMovie();
   }
 
   public loadMovie(){

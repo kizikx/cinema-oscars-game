@@ -7,6 +7,7 @@ export abstract class Routes {
   static readonly vote: string = '/game//vote';
 
   static getApiRoute(route : String){
+    console.log(environment.api.uri+route);
     return environment.api.uri+route;
   }
 }
