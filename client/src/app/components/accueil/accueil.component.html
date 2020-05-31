@@ -1,11 +1,6 @@
-<!-- <app-liste-joueurs></app-liste-joueurs> -->
-<app-liste-games></app-liste-games>
-
-<!-- <ng-container>
-  <app-game></app-game>
-</ng-container> -->
-
 <div mat-dialog-actions>
-  <button mat-button (click)="openDialog()">Creer une partie</button>
+  <div class="button-row">
+    <button mat-flat-button color="primary" (click)="openDialog()">Creer une partie</button>
+  </div>
 </div>
-
+<app-liste-games></app-liste-games>

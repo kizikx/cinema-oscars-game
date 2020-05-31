@@ -1,16 +1,17 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { Subscription } from 'rxjs';
 import { GameM } from 'src/app/shared/models/game-m';
 import { GameService } from 'src/app/services/game.service';
 import { MovieService } from 'src/app/services/movie.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  selector: 'app-ajout-game',
+  templateUrl: './ajout-game.component.html',
+  styleUrls: ['./ajout-game.component.css']
 })
-export class GameComponent implements OnInit {
+export class AjoutGameComponent implements OnInit {
 
   private addGameSubscription : Subscription;
   private getCategoriesSubscription : Subscription;
@@ -18,12 +19,13 @@ export class GameComponent implements OnInit {
   public categories : CategorieM[];
 
   constructor(
+    public dialogRef: MatDialogRef<AjoutGameComponent>,
     private readonly gameServ : GameService,
     private readonly cdRef : ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
-    // this.ajoutGame(this.gameAjout);
+
   }
 
   public ajoutGame(game : GameM){
@@ -34,17 +36,19 @@ export class GameComponent implements OnInit {
       })
   }
 
-  public loadCategories(){
-    this.getCategoriesSubscription = this.gameServ
-    .getCategories("1")
-    .subscribe(data => {
-      this.categories = data.map(({categories}) => categories);
-      console.log(this.categories);
-      this.cdRef.markForCheck();
-    })
+  public ajoutCategories(categorieName : string, categorieDescription : string){
+    let categorieAjout : CategorieM
+    categorieAjout.name = categorieName;
+    categorieAjout.description = categorieDescription
+    this.categories.push(categorieAjout)
+    console.log(this.categories);
   }
 
   public supprimerCategories(){
     //TODO Supprimer les categories ajoutees en cas
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

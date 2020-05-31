@@ -18,13 +18,4 @@ export class ChoixJoueurComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // public loadCategories(){
-  //   this.getCategorieSubscription = this.gameServ
-  //   .getCategories()
-  //   .subscribe(data => {
-  //     this.categories = data.map(({categories}) => categories);
-  //     console.log(this.categories);
-  //     this.cdRef.markForCheck();
-  //   })
-  // }
 }

@@ -3,7 +3,6 @@ import { MovieService } from 'src/app/services/movie.service';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
 import { Subscription } from 'rxjs';
-import { GameService } from 'src/app/services/game.service';
 
 @Component({
   selector: 'app-movie',

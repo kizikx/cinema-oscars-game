@@ -12,7 +12,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ChoixJoueurComponent } from './components/choix-joueur/choix-joueur.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ListeGamesComponent } from './components/liste-games/liste-games.component';
-import { GameComponent } from './components/game/game.component';
+import { AjoutGameComponent } from './components/ajout-game/ajout-game.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
+import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
+import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
+
 
 
 @NgModule({
@@ -23,7 +30,10 @@ import { GameComponent } from './components/game/game.component';
     VoteComponent,
     ChoixJoueurComponent,
     ListeGamesComponent,
-    GameComponent
+    AjoutGameComponent,
+    PageJeuComponent,
+    ListeJoueursComponent,
+    AjoutJoueurComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +41,13 @@ import { GameComponent } from './components/game/game.component';
     HttpClientModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    BrowserAnimationsModule,
+    MatInputModule
+  ],
+  entryComponents: [
+    AjoutGameComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

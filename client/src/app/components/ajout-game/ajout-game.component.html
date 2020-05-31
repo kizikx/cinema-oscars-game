@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Ajouter une partie</h1>
+<div mat-dialog-content>
+  <p>Categories a ajouter</p>
+  <mat-form-field>
+    <mat-label>Saisir la categorie</mat-label>
+    <input matInput type="text" name="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Saisir la description de la categorie</mat-label>
+    <input matInput type="text" name="description">
+  </mat-form-field>
+</div>
+
+<ng-container>
+  <div mat-dialog-actions>
+    <button mat-button cdkFocusInitial>Ajouter</button>
+  </div>
+</ng-container>
+
+<!-- (click)="ajoutCategories()" -->
+
+<h3>Categories ajoutees :</h3>
+<ng-container *ngFor="let categorie of categories">
+  <div>
+    {{categorie.name}}
+  </div>
+</ng-container>
+
+<div mat-dialog-actions>
+  <button mat-button cdkFocusInitial>Valider</button>
+</div>

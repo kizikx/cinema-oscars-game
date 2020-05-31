@@ -5,7 +5,7 @@ import { GameService } from 'src/app/services/game.service';
 import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { MovieService } from 'src/app/services/movie.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { GameComponent } from '../game/game.component';
+import { AjoutGameComponent } from '../ajout-game/ajout-game.component';
 
 @Component({
   selector: 'app-accueil',
@@ -38,8 +38,8 @@ export class AccueilComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(GameComponent, {
-      width: '250px',
+    const dialogRef = this.dialog.open(AjoutGameComponent, {
+      width: '300px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
