@@ -32,4 +32,8 @@ export class ListeGamesComponent implements OnInit {
       this.cdRef.markForCheck();
     })
   }
+
+  public playGame(){
+    console.log("lancer jeu");
+  }
 }

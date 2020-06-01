@@ -1,23 +1,20 @@
 <h1 mat-dialog-title>Ajouter une partie</h1>
 <div mat-dialog-content>
   <p>Categories a ajouter</p>
-  <mat-form-field>
-    <mat-label>Saisir la categorie</mat-label>
-    <input matInput type="text" name="name">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Saisir la description de la categorie</mat-label>
-    <input matInput type="text" name="description">
-  </mat-form-field>
-</div>
-
-<ng-container>
-  <div mat-dialog-actions>
-    <button mat-button cdkFocusInitial>Ajouter</button>
+  <div [formGroup] = "ajoutGameForm" (ngSubmit)="ajoutCategories()">
+    <mat-form-field>
+      <mat-label>Saisir la categorie</mat-label>
+      <input matInput type="text" formControlName="nomCategorie">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Saisir la description de la categorie</mat-label>
+      <input matInput type="text" formControlName="descriptionCategorie">
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-button type="submit" (click)="ajoutCategories()" cdkFocusInitial>Ajouter</button>
+    </div>
   </div>
-</ng-container>
-
-<!-- (click)="ajoutCategories()" -->
+</div>
 
 <h3>Categories ajoutees :</h3>
 <ng-container *ngFor="let categorie of categories">
@@ -27,5 +24,5 @@
 </ng-container>
 
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial>Valider</button>
+  <button mat-button (click)="ajoutGame()" cdkFocusInitial>Valider</button>
 </div>

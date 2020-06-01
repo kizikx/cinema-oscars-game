@@ -19,10 +19,10 @@ export class ListeJoueursComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadGame();
+    this.loadJoueurs();
   }
 
-  public loadGame(){
+  public loadJoueurs(){
     this.getJoueurSubscription = this.playerServ
     .getPlayer()
     .subscribe(data => {

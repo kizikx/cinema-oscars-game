@@ -10,15 +10,16 @@ import { VoteComponent } from './components/vote/vote.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChoixJoueurComponent } from './components/choix-joueur/choix-joueur.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ListeGamesComponent } from './components/liste-games/liste-games.component';
 import { AjoutGameComponent } from './components/ajout-game/ajout-game.component';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
 import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
 import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -44,7 +45,8 @@ import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.com
     MatDialogModule,
     MatGridListModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     AjoutGameComponent

@@ -5,6 +5,7 @@ import { GameM } from 'src/app/shared/models/game-m';
 import { GameService } from 'src/app/services/game.service';
 import { MovieService } from 'src/app/services/movie.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-ajout-game',
@@ -16,7 +17,12 @@ export class AjoutGameComponent implements OnInit {
   private addGameSubscription : Subscription;
   private getCategoriesSubscription : Subscription;
   public gameAjout : GameM;
-  public categories : CategorieM[];
+  public categories : CategorieM[] = [];
+
+  public ajoutGameForm = new FormGroup({
+    nomCategorie : new FormControl(),
+    descriptionCategorie : new FormControl()
+  });
 
   constructor(
     public dialogRef: MatDialogRef<AjoutGameComponent>,
@@ -28,20 +34,21 @@ export class AjoutGameComponent implements OnInit {
 
   }
 
-  public ajoutGame(game : GameM){
+  public ajoutGame(){
     this.addGameSubscription = this.gameServ
-      .addGame(game)
+      .addGame(this.gameAjout)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
   }
 
-  public ajoutCategories(categorieName : string, categorieDescription : string){
-    let categorieAjout : CategorieM
-    categorieAjout.name = categorieName;
-    categorieAjout.description = categorieDescription
-    this.categories.push(categorieAjout)
-    console.log(this.categories);
+  public ajoutCategories(){
+    console.log(this.ajoutGameForm.value);
+    const categorieAjout = new CategorieM({
+      name : this.ajoutGameForm.get('nomCategorie').value,
+      description : this.ajoutGameForm.get('descriptionCategorie').value
+    });
+    this.categories.push(categorieAjout);
   }
 
   public supprimerCategories(){

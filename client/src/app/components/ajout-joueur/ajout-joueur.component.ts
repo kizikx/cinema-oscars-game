@@ -5,6 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { GameService } from 'src/app/services/game.service';
 import { PlayerService } from 'src/app/services/player.service';
 import { CategorieM } from 'src/app/shared/models/categorie-m';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-ajout-joueur',
@@ -18,6 +19,11 @@ export class AjoutJoueurComponent implements OnInit {
   public joueurAjout : PlayerM;
   public categories : CategorieM[];
 
+  public ajoutJoueurForm = new FormGroup({
+    nomJoueur : new FormControl(),
+    isAdministrateur : new FormControl()
+  });
+
   constructor(
     public dialogRef: MatDialogRef<AjoutJoueurComponent>,
     private readonly playerServ : PlayerService,
@@ -29,9 +35,9 @@ export class AjoutJoueurComponent implements OnInit {
 
   }
 
-  public ajoutJoueur(joueur : PlayerM){
+  public ajoutJoueur(){
     this.addJoueurSubscription = this.playerServ
-      .addPlayer(joueur)
+      .addPlayer(this.joueurAjout)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
