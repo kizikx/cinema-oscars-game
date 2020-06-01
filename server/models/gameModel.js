@@ -5,6 +5,7 @@ let Schema = mongoose.Schema;
 
 let GameSchema = new Schema(
   {
+    name: {type: String},
     categories: [{
       name: {type: String},
       description: {type: String}
