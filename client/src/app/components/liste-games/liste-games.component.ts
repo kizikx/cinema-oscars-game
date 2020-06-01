@@ -33,7 +33,7 @@ export class ListeGamesComponent implements OnInit {
     })
   }
 
-  public playGame(){
-    console.log("lancer jeu");
+  public playGame(game : GameM){
+
   }
 }

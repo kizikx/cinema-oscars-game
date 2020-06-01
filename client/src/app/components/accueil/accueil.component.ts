@@ -6,6 +6,7 @@ import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { MovieService } from 'src/app/services/movie.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AjoutGameComponent } from '../ajout-game/ajout-game.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',
@@ -21,7 +22,8 @@ export class AccueilComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private readonly gameServ : GameService,
-    private readonly cdRef : ChangeDetectorRef
+    private readonly cdRef : ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit(): void {

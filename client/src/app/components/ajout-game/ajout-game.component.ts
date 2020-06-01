@@ -43,7 +43,6 @@ export class AjoutGameComponent implements OnInit {
   }
 
   public ajoutCategories(){
-    console.log(this.ajoutGameForm.value);
     const categorieAjout = new CategorieM({
       name : this.ajoutGameForm.get('nomCategorie').value,
       description : this.ajoutGameForm.get('descriptionCategorie').value
@@ -52,7 +51,7 @@ export class AjoutGameComponent implements OnInit {
   }
 
   public supprimerCategories(){
-    //TODO Supprimer les categories ajoutees en cas
+    //TODO Supprimer les categories ajoutees
   }
 
   onNoClick(): void {

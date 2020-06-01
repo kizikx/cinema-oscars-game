@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { GameM } from 'src/app/shared/models/game-m';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-jeu',
@@ -13,7 +14,8 @@ export class PageJeuComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private readonly cdRef : ChangeDetectorRef
+    private readonly cdRef : ChangeDetectorRef,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
