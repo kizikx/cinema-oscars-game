@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
 import { Subscription } from 'rxjs';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-movie',
@@ -12,22 +13,23 @@ import { Subscription } from 'rxjs';
 export class MovieComponent implements OnInit {
 
   private addMovieSubscription : Subscription;
-  private getMovieSubscription : Subscription;
+  private movieAjout : MovieM;
+  public acteurs : ActeurM[]= [];
+  @Input() categorieLibre : boolean;
 
-  private mockActeur = new ActeurM({
-    name : 'test',
-    male : true,
-  })
+  public ajoutMovieForm = new FormGroup({
+    title : new FormControl(),
+    realisator : new FormControl(),
+    category : new FormControl(),
+    duration : new FormControl(),
+    country : new FormControl(),
+    actors : new FormControl(),
+    description : new FormControl()
+  });
 
-  private mockMovie = new MovieM({
-    title : 'test',
-    realisator : 'test',
-    category : 'test',
-    duration : 'test',
-    country : 'test',
-    actors : this.mockActeur,
-    description : 'test',
-    gameId : 'test',
+  public ajoutActeurForm = new FormGroup({
+    name : new FormControl(),
+    male : new FormControl()
   });
 
   constructor(
@@ -38,19 +40,29 @@ export class MovieComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public loadMovie(){
-    this.getMovieSubscription = this.movieServ
-    .getMovie()
-    .subscribe(data => {
-      this.cdRef.markForCheck();
+  public ajoutMovie(){
+    this.movieAjout = new MovieM({
+      title : this.ajoutMovieForm.get('title').value,
+      realisator : this.ajoutMovieForm.get('realisator').value,
+      category : this.ajoutMovieForm.get('category').value,
+      duration : this.ajoutMovieForm.get('duration').value,
+      country : this.ajoutMovieForm.get('country').value,
+      actors : this.ajoutMovieForm.get('actors').value,
+      description : this.ajoutMovieForm.get('description').value,
     })
-  }
 
-  public ajoutMovie(movie : MovieM){
     this.addMovieSubscription = this.movieServ
-      .addMovie(movie)
+      .addMovie(this.movieAjout)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
+  }
+
+  public ajoutActeurs(){
+    const acteurAjout = new ActeurM({
+      name : this.ajoutActeurForm.get('name').value,
+      male : this.ajoutActeurForm.get('male').value
+    });
+    this.acteurs.push(acteurAjout);
   }
 }
