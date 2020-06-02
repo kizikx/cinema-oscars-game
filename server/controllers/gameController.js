@@ -12,7 +12,7 @@ module.exports.createGame = async(req, res) => {
     }
     const game = new Game({
       name: req.body.name,
-      catagories: req.body.catagories,
+      categories: req.body.categories,
       ongoing: true
     });
   
@@ -92,8 +92,8 @@ module.exports.addCategory = (req, res) => {
     }
   
     Game.findOne({_id: req.params.gameId}, (err, foundObject) => {
-      if (req.body.catagories !== undefined) {
-        foundObject.catagories.push(req.body.catagories);
+      if (req.body.categories !== undefined) {
+        foundObject.categories.push(req.body.categories);
       }
       foundObject.save((err, updatedObject) => {
           if (err) {
