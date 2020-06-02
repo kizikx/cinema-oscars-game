@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class VoteService {
 
-  private readonly route = Routes.getApiRoute(Routes.vote);
+  private readonly route = Routes.getApiRoute(Routes.extensionVote);
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -27,7 +27,6 @@ export class VoteService {
   }
 
   public addPlayer(vote : VoteM): Observable<VoteM>{
-    console.log("route "+this.route);
     return this.http.post<VoteM>(this.route, vote, this.httpOptions)
     .pipe(
       map(item => new VoteM(item))

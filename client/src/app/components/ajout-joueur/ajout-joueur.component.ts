@@ -48,7 +48,6 @@ export class AjoutJoueurComponent implements OnInit {
     .getCategories()
     .subscribe(data => {
       this.categories = data.map(({categories}) => categories);
-      console.log(this.categories);
       this.cdRef.markForCheck();
     })
   }
