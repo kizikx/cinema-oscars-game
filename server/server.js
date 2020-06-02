@@ -7,6 +7,7 @@ let mongoUrl = process.env.MONGO_SECRET;
 
 require('./models/gameModel');
 require('./models/movieModel');
+require('./models/oscarModel');
 require('./models/playerModel');
 require('./models/voteModel');
 

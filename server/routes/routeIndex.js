@@ -10,6 +10,8 @@ module.exports = (app) => {
 
     app.patch('/game/:gameId', gameController.updateGame);
 
+    app.patch('/game/:gameId', gameController.addCategory);
+
     app.get('/game/:gameId', gameController.getGameById);
     
     app.post('/game/:gameId/player', playerController.createPlayer);
@@ -31,4 +33,12 @@ module.exports = (app) => {
     app.get('/game/:gameId/vote', voteController.getVotes);
 
     app.get('/game/:gameId/vote/:voteId', voteController.getVoteById);
+
+    app.post('/game/:gameId/oscar', oscarController.createOscar);
+
+    app.get('/game/:gameId/oscar', oscarController.getOscars);
+
+    app.get('/game/:gameId/oscar/:oscarId', oscarController.getOscarById);
+
+    app.patch('/game/:gameId/oscar/:oscarId', oscarController.addVote);
 };
