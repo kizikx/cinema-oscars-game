@@ -12,7 +12,8 @@ import { GameM } from '../shared/models/game-m';
   providedIn: 'root'
 })
 export class PlayerService {
-  private readonly route = Routes.getApiRoute(Routes.player);
+  private gameId : string;
+  private readonly route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionPlayer);
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json'
@@ -29,10 +30,13 @@ export class PlayerService {
   }
 
   public addPlayer(player : PlayerM): Observable<PlayerM>{
-    console.log("route "+this.route);
     return this.http.post<PlayerM>(this.route, player, this.httpOptions)
     .pipe(
       map(item => new PlayerM(item))
     );
+  }
+
+  public setGameId(gameId : string){
+    this.gameId = gameId;
   }
 }

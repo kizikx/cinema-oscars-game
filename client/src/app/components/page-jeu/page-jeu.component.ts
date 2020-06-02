@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { GameM } from 'src/app/shared/models/game-m';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-page-jeu',
@@ -10,15 +10,18 @@ import { Router } from '@angular/router';
 })
 export class PageJeuComponent implements OnInit {
 
-  @Input() game : GameM;
+  public gameId : any;
 
   constructor(
     public dialog: MatDialog,
     private readonly cdRef : ChangeDetectorRef,
-    private router: Router
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.router.params.subscribe(params => {
+      this.gameId = params.gameId;
+    })
   }
 
   public supprimerJoueur(){

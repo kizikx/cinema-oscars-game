@@ -27,7 +27,6 @@ export class GameService {
   }
 
   public addGame(game : GameM):Observable<GameM>{
-    console.log("route "+this.route);
     return this.http.post<GameM>(this.route, game, this.httpOptions)
     .pipe(
       map(item => new GameM(item))

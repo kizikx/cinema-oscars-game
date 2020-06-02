@@ -5,8 +5,9 @@ import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
 
 
 const routes: Routes = [
+  { path : '', redirectTo: '/accueil', pathMatch: 'full' },
   { path : 'accueil', component: AccueilComponent},
-  { path : 'pageJeu', component: PageJeuComponent}
+  { path : 'pageJeu/:gameId', component: PageJeuComponent}
 ];
 
 @NgModule({

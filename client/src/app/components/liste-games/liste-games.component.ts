@@ -12,6 +12,7 @@ export class ListeGamesComponent implements OnInit {
 
   private getGameSubscription : Subscription;
   public games : GameM[];
+  public gameId : string;
 
   constructor(
     private readonly gameServ : GameService,
@@ -27,12 +28,11 @@ export class ListeGamesComponent implements OnInit {
     .getGame()
     .subscribe(data => {
       this.games = data;
-      console.log(this.games);
       this.cdRef.markForCheck();
     })
   }
 
   public playGame(game : GameM){
-    console.log(game._id);
+    this.gameId = game._id;
   }
 }
