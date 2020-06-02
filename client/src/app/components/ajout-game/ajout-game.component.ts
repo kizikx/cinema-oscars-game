@@ -20,6 +20,7 @@ export class AjoutGameComponent implements OnInit {
   public categories : CategorieM[] = [];
 
   public ajoutGameForm = new FormGroup({
+    nomGame : new FormControl(),
     nomCategorie : new FormControl(),
     descriptionCategorie : new FormControl()
   });

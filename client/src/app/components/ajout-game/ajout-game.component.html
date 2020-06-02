@@ -1,7 +1,11 @@
 <h1 mat-dialog-title>Ajouter une partie</h1>
 <div mat-dialog-content>
-  <p>Categories a ajouter</p>
-  <div [formGroup] = "ajoutGameForm" (ngSubmit)="ajoutCategories()">
+  <div [formGroup] = "ajoutGameForm">
+    <mat-form-field>
+      <mat-label>Nom de la partie</mat-label>
+      <input matInput type="text" formControlName="nomGame">
+    </mat-form-field>
+    <p>Categories de la partie :</p>
     <mat-form-field>
       <mat-label>Saisir la categorie</mat-label>
       <input matInput type="text" formControlName="nomCategorie">
@@ -11,7 +15,7 @@
       <input matInput type="text" formControlName="descriptionCategorie">
     </mat-form-field>
     <div mat-dialog-actions>
-      <button mat-button type="submit" (click)="ajoutCategories()" cdkFocusInitial>Ajouter</button>
+      <button mat-button (click)="ajoutCategories()" cdkFocusInitial>Ajouter</button>
     </div>
   </div>
 </div>
