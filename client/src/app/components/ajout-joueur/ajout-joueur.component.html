@@ -5,16 +5,10 @@
       <mat-label>Saisir le nom</mat-label>
       <input matInput type="text" formControlName="nomJoueur">
     </mat-form-field>
-    <mat-form-field>
-      <section class="section">
-        <mat-checkbox class="margin" formControlName="isAdministrateur">Administrateur</mat-checkbox>
-      </section>
-    </mat-form-field>
+    <mat-checkbox formControlName="isAdministrateur">Administrateur</mat-checkbox>
   </div>
 </div>
 
-<ng-container>
-  <div mat-dialog-actions>
-    <button mat-button (click)="ajoutJoueur()" cdkFocusInitial>Ajouter</button>
-  </div>
-</ng-container>
+<div mat-dialog-actions>
+  <button mat-button (click)="ajoutJoueur()" cdkFocusInitial>Ajouter</button>
+</div>

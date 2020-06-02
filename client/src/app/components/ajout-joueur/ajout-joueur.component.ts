@@ -17,7 +17,7 @@ export class AjoutJoueurComponent implements OnInit {
   private addJoueurSubscription : Subscription;
   private getCategorieSubscription : Subscription;
   public joueurAjout : PlayerM;
-  public categories : CategorieM[];
+  public categories : CategorieM[] = [];
 
   public ajoutJoueurForm = new FormGroup({
     nomJoueur : new FormControl(),

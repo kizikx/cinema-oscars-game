@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { GameM } from 'src/app/shared/models/game-m';
 import { MatDialog } from '@angular/material/dialog';
 import {ActivatedRoute} from '@angular/router';
+import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
 
 @Component({
   selector: 'app-page-jeu',
@@ -29,7 +30,7 @@ export class PageJeuComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(PageJeuComponent, {
+    const dialogRef = this.dialog.open(AjoutJoueurComponent, {
       width: '300px',
     });
 

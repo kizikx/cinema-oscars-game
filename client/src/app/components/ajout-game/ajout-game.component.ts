@@ -3,8 +3,7 @@ import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { Subscription } from 'rxjs';
 import { GameM } from 'src/app/shared/models/game-m';
 import { GameService } from 'src/app/services/game.service';
-import { MovieService } from 'src/app/services/movie.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
