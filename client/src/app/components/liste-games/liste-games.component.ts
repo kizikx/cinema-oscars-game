@@ -26,7 +26,6 @@ export class ListeGamesComponent implements OnInit {
     this.getGameSubscription = this.gameServ
     .getGame()
     .subscribe(data => {
-      console.log(data);
       this.games = data;
       console.log(this.games);
       this.cdRef.markForCheck();
@@ -34,6 +33,6 @@ export class ListeGamesComponent implements OnInit {
   }
 
   public playGame(game : GameM){
-
+    console.log(game._id);
   }
 }
