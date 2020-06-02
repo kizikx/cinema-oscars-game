@@ -20,11 +20,13 @@
   </div>
 </div>
 
-<h3>Categories ajoutees :</h3>
-<ng-container *ngFor="let categorie of categories">
-  <div>
-    {{categorie.name}}
-  </div>
+<ng-container *ngIf="categories.length > 0">
+  <h3>Categories ajoutees :</h3>
+  <ng-container *ngFor="let categorie of categories">
+    <div>
+      {{categorie.name}}
+    </div>
+  </ng-container>
 </ng-container>
 
 <div mat-dialog-actions>

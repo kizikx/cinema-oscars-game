@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { PlayerM } from 'src/app/shared/models/player-m';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-choix-joueur',
@@ -13,9 +14,14 @@ export class ChoixJoueurComponent implements OnInit {
   public categorieAttribut : CategorieM;
   public joueur : PlayerM;
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<ChoixJoueurComponent>
+  ) { }
 
   ngOnInit(): void {
   }
 
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
