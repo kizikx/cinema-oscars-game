@@ -11,6 +11,7 @@ module.exports.createGame = async(req, res) => {
         });
     }
     const game = new Game({
+      name: req.body.name,
       catagories: req.body.catagories,
       ongoing: true
     });
