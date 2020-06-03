@@ -7,7 +7,7 @@ export class MovieM implements MovieI{
   category : string;
   duration : string;
   country : string;
-  actors : ActeurM;
+  actors : ActeurM[];
   description : string;
   gameId : string;
 

@@ -10,7 +10,6 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
   styleUrls: ['./choix-joueur.component.css']
 })
 export class ChoixJoueurComponent implements OnInit {
-  public joueur : PlayerM;
 
   constructor(
     public dialogRef: MatDialogRef<ChoixJoueurComponent>,

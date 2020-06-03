@@ -20,6 +20,7 @@ import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
 import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
 import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -46,7 +47,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatGridListModule,
     BrowserAnimationsModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     AjoutGameComponent

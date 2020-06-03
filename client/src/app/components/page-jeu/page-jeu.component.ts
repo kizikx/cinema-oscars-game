@@ -32,6 +32,9 @@ export class PageJeuComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(AjoutJoueurComponent, {
       width: '300px',
+      data: {
+        _id : this.gameId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

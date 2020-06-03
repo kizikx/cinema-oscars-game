@@ -6,7 +6,7 @@ export interface MovieI {
   category : string,
   duration : string,
   country : string,
-  actors : ActeurI,
+  actors : ActeurI[],
   description : string,
   gameId : string
 }
