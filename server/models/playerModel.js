@@ -9,7 +9,8 @@ let PlayerSchema = new Schema(
     gameId: {type: String, required: true},
     category: {
       name: {type: String},
-      description: {type: String}
+      description: {type: String},
+      sent: {type: String}
     },
   }
 );

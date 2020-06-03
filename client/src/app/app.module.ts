@@ -21,8 +21,7 @@ import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.
 import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+import { ChoixOscarsComponent } from './components/choix-oscars/choix-oscars.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AjoutGameComponent,
     PageJeuComponent,
     ListeJoueursComponent,
-    AjoutJoueurComponent
+    AjoutJoueurComponent,
+    ChoixOscarsComponent
   ],
   imports: [
     BrowserModule,
