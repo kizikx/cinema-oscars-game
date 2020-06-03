@@ -1,0 +1,28 @@
+<div [formGroup] = "ajoutOscarForm">
+    <h4>Oscar du meilleur film</h4>
+    <mat-form-field>
+        <mat-label>Film</mat-label>
+        <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let movie of movieTab" [value]="" formControlName="title">{{movie.title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h4>Oscar du meilleur réalisateur</h4>
+    <mat-form-field>
+        <mat-label>Réalisateur</mat-label>
+        <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let movie of movieTab" [value]="" formControlName="realisator">{{movie.realisator}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h4>Oscar du meilleur acteur</h4>
+    <mat-form-field>
+        <mat-label>Acteur</mat-label>
+        <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let movie of movieTab" [value]="" formControlName="actor">{{movie.actors.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

@@ -12,6 +12,7 @@ import { OscarM } from '../shared/models/oscar-m';
 })
 export class OscarService {
   private gameId : string;
+  private oscarId : string;
   private route : string;
   private httpOptions = {
     headers: new HttpHeaders({
@@ -48,5 +49,9 @@ export class OscarService {
 
   public setGameId(gameId : string){
     this.gameId = "/"+gameId;
+  }
+
+  public setOscarId(oscarId : string){
+    this.oscarId = "/"+oscarId;
   }
 }
