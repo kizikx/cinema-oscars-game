@@ -22,16 +22,16 @@ export class OscarService {
   constructor(
     private readonly http: HttpClient) { }
 
-  public getMovie(): Observable<OscarM[]>{
-    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovie);
+  public getOscar(): Observable<OscarM[]>{
+    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionOscar);
     return this.http.get<OscarM[]>(this.route)
     .pipe(
       map(data => data.map(item => new OscarM(item)))
     );
   }
 
-  public addMovie(oscar : OscarM): Observable<OscarM>{
-    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovie);
+  public createOscar(oscar : OscarM): Observable<OscarM>{
+    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionOscar);
     return this.http.post<OscarM>(this.route, oscar, this.httpOptions)
    .pipe(
      map(item => new OscarM(item))
