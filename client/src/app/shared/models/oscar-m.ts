@@ -1,12 +1,12 @@
 import { OscarI } from '../interfaces/oscar-i';
 
-export class OscarO implements OscarI{
+export class OscarM implements OscarI{
   gameId : string;
   name : string;
   description : string;
   vote: Array<string>;
 
-  constructor(fields?: Partial<OscarO>){
+  constructor(fields?: Partial<OscarM>){
     if (fields) {
       Object.assign(this, fields);
     }
