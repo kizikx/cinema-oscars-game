@@ -12,8 +12,9 @@ module.exports.createPlayer = async(req, res) => {
     }
     const player = new Player({
       name: req.body.name,
-      admin: req.body.catagories,
-      gameId: req.params.gameId
+      admin: req.body.admin,
+      gameId: req.params.gameId,
+      categories: req.body.categories
     });
   
     player.save()
