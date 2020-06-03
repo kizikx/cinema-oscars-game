@@ -36,9 +36,13 @@ export class ListeJoueursComponent implements OnInit {
     })
   }
 
-  openDialog(): void {
+  openDialog(joueurChoix : PlayerM): void {
     const dialogRef = this.dialog.open(ChoixJoueurComponent, {
       width: '300px',
+      data: {
+        name: joueurChoix.name,
+        category: joueurChoix.category
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
