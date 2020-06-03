@@ -20,7 +20,7 @@ import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
 import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
 import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ChoixOscarsComponent } from './choix-oscars/choix-oscars.component';
+import { ChoixOscarsComponent } from './components/choix-oscars/choix-oscars.component';
 
 
 
