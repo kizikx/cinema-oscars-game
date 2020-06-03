@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { GameM } from 'src/app/shared/models/game-m';
+import { OscarM } from 'src/app/shared/models/oscar-m';
 import { MatDialog } from '@angular/material/dialog';
 import {ActivatedRoute} from '@angular/router';
 import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
@@ -12,6 +13,9 @@ import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
 export class PageJeuComponent implements OnInit {
 
   public gameId : any;
+  public OscarFilm : OscarM;
+  public OscarActeur : OscarM;
+  public OscarRéalisateur : OscarM;
 
   constructor(
     public dialog: MatDialog,
@@ -23,6 +27,14 @@ export class PageJeuComponent implements OnInit {
     this.router.params.subscribe(params => {
       this.gameId = params.gameId;
     })
+  }
+
+  public ajoutOscars(){
+    this.addGameSubscription = this.gameServ
+      .addOscars(this.gameAjout)
+      .subscribe(data => {
+        this.cdRef.markForCheck();
+      })
   }
 
   public supprimerJoueur(){
