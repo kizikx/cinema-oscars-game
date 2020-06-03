@@ -3,6 +3,7 @@ module.exports = (app) => {
     const playerController = require('../controllers/playerController');
     const movieController = require('../controllers/movieController');
     const voteController = require('../controllers/voteController');
+    const oscarController = require('../controllers/oscarController');
 
     app.post('/game', gameController.createGame);
 

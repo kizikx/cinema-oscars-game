@@ -11,8 +11,10 @@ export  class Routes {
   // static readonly player: string = '/game/:gameId/player';
   // static readonly vote: string = '/game/:gameId/vote';
 
-  static getApiRoute(route : string, gameId? : string, extension? : string){
-    if(gameId && extension){
+  static getApiRoute(route : string, gameId? : string, extension? : string, id? : string){
+    if(gameId && extension && id){
+      return environment.api.uri+route+gameId+extension+id;
+    } else if(gameId && extension){
       return environment.api.uri+route+gameId+extension;
     } else if (gameId)
       return environment.api.uri+route+gameId;

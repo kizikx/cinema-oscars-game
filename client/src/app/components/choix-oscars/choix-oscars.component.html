@@ -1,28 +1,29 @@
-<div [formGroup] = "ajoutOscarForm">
+<form [formGroup] = "ajoutOscarForm">
     <h4>Oscar du meilleur film</h4>
     <mat-form-field>
         <mat-label>Film</mat-label>
-        <mat-select>
+        <mat-select formControlName="title">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let movie of movieTab" [value]="" formControlName="title">{{movie.title}}</mat-option>
+            <mat-option *ngFor="let movie of movieTab" [value]="movie.title" (selectionChange)="updateOscarTitle($event.value)">{{movie.title}}</mat-option>
         </mat-select>
     </mat-form-field>
 
     <h4>Oscar du meilleur réalisateur</h4>
     <mat-form-field>
         <mat-label>Réalisateur</mat-label>
-        <mat-select>
+        <mat-select formControlName="realisator">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let movie of movieTab" [value]="" formControlName="realisator">{{movie.realisator}}</mat-option>
+            <mat-option *ngFor="let movie of movieTab" [value]="movie.realisator" (selectionChange)="updateOscarRealisator($event.value)">{{movie.realisator}}</mat-option>
         </mat-select>
     </mat-form-field>
 
     <h4>Oscar du meilleur acteur</h4>
     <mat-form-field>
         <mat-label>Acteur</mat-label>
-        <mat-select>
+        <mat-select formControlName="actor">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let movie of movieTab" [value]="" formControlName="actor">{{movie.actors.name}}</mat-option>
+            <mat-option *ngFor="let movie of movieTab" [value]="movie.actor.name" (selectionChange)="updateOscarActor($event.value)">{{movie.actors.name}}</mat-option>
         </mat-select>
     </mat-form-field>
-</div>
+    <button (onclick)="updateOscars()"></button>
+</form>
