@@ -44,11 +44,17 @@ export class AjoutJoueurComponent implements OnInit {
   public ajoutJoueur(){
     //TODO Modifier categorieAjour pour distribuer aléatoirement
     const categorieAjout = this.categories[0];
+    let adminChoix : boolean;
+    if(this.ajoutJoueurForm.get('isAdministrateur').value == null){
+      adminChoix = false;
+    } else {
+      adminChoix = true;
+    }
 
     this.joueurAjout = new PlayerM({
       name : this.ajoutJoueurForm.get('nomJoueur').value,
       category : categorieAjout,
-      admin : this.ajoutJoueurForm.get('isAdministrateur').value,
+      admin : adminChoix,
       gameId : this.gameId
     })
     this.addJoueurSubscription = this.playerServ
