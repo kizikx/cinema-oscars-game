@@ -23,6 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChoixOscarsComponent } from './components/choix-oscars/choix-oscars.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ResultatComponent } from './components/resultat/resultat/resultat.component';
+import { ClassementComponent } from './components/classement/classement.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { MatSelectModule } from '@angular/material/select';
     PageJeuComponent,
     ListeJoueursComponent,
     AjoutJoueurComponent,
-    ChoixOscarsComponent
+    ChoixOscarsComponent,
+    ResultatComponent,
+    ClassementComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule
   ],
   entryComponents: [
     AjoutGameComponent
