@@ -20,8 +20,7 @@ export class MovieService {
     })
   };
 
-  constructor(
-    private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   public getMovie(): Observable<MovieM[]>{
     this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovie);
@@ -32,6 +31,7 @@ export class MovieService {
   }
 
   public addMovie(movie : MovieM): Observable<MovieM>{
+    console.log(movie);
     this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovie);
     return this.http.post<MovieM>(this.route, movie, this.httpOptions)
    .pipe(

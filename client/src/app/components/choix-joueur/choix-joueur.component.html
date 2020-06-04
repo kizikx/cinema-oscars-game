@@ -2,14 +2,14 @@
 <div mat-dialog-content>
   <h3>Film de la categorie : {{data.category}}</h3>
   <mat-label>Saisir le film</mat-label>
-  <app-movie [categorieLibre]=false></app-movie>
+  <app-movie (movieOutput)="getFilmCategorie($event)" [categorieLibre]=false></app-movie>
   <br>
   <h3>Film Libre</h3>
   <mat-label>Saisir le film</mat-label>
-  <app-movie [categorieLibre]=true></app-movie>
+  <app-movie (movieOutput)="getFilmChoixLibre($event)" [categorieLibre]=true></app-movie>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Annuler</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+  <button mat-button cdkFocusInitial (click)="addMovie()">Ok</button>
 </div>

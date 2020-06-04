@@ -1,4 +1,4 @@
-<div mat-dialog-content>
+<div (change)="emitChoix()" mat-dialog-content>
   <div [formGroup] = "ajoutMovieForm">
     <mat-form-field>
       <mat-label>Titre</mat-label>
@@ -38,7 +38,7 @@
   <mat-checkbox class="margin" formControlName="male">Homme</mat-checkbox>
   <mat-checkbox class="margin" formControlName="male">Femme</mat-checkbox>
   <div mat-dialog-actions>
-    <button mat-button type="submit" (click)="ajoutActeurs()" cdkFocusInitial>Ajouter</button>
+    <button mat-button type="submit" (click)="ajoutActeurs()" cdkFocusInitial>Ajouter l'acteur</button>
   </div>
 </div>
 <br>

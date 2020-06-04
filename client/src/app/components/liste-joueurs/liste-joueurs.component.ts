@@ -41,7 +41,8 @@ export class ListeJoueursComponent implements OnInit {
       width: '300px',
       data: {
         name: joueurChoix.name,
-        category: joueurChoix.category
+        category: joueurChoix.category,
+        gameId: this.gameId
       }
     });
 

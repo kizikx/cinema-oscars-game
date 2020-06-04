@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
@@ -12,10 +12,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class MovieComponent implements OnInit {
 
-  private addMovieSubscription : Subscription;
   private movieAjout : MovieM;
   public acteurs : ActeurM[]= [];
   @Input() categorieLibre : boolean;
+
+  @Output() movieOutput = new EventEmitter<MovieM>();
 
   public ajoutMovieForm = new FormGroup({
     title : new FormControl(),
@@ -32,15 +33,12 @@ export class MovieComponent implements OnInit {
     male : new FormControl()
   });
 
-  constructor(
-    private readonly movieServ : MovieService,
-    private readonly cdRef : ChangeDetectorRef
-  ) { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }
 
-  public ajoutMovie(){
+  public ajoutMovieChoix(){
     this.movieAjout = new MovieM({
       title : this.ajoutMovieForm.get('title').value,
       realisator : this.ajoutMovieForm.get('realisator').value,
@@ -50,12 +48,6 @@ export class MovieComponent implements OnInit {
       actors : this.acteurs,
       description : this.ajoutMovieForm.get('description').value,
     })
-
-    this.addMovieSubscription = this.movieServ
-      .addMovie(this.movieAjout)
-      .subscribe(data => {
-        this.cdRef.markForCheck();
-      })
   }
 
   public ajoutActeurs(){
@@ -64,5 +56,10 @@ export class MovieComponent implements OnInit {
       male : this.ajoutActeurForm.get('male').value
     });
     this.acteurs.push(acteurAjout);
+  }
+
+  public emitChoix() {
+    this.ajoutMovieChoix();
+    this.movieOutput.emit(this.movieAjout);
   }
 }
