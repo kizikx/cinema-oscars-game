@@ -4,6 +4,7 @@ import { OscarService } from 'src/app/services/oscar.service';
 import { Subscription } from 'rxjs';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { OscarM } from 'src/app/shared/models/oscar-m';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-choix-oscars',
@@ -18,6 +19,12 @@ export class ChoixOscarsComponent implements OnInit {
   private oscars : OscarM[];
   private oscarsOriginal : OscarM[];
   private voteSize : [];
+
+  public ajoutOscarForm = new FormGroup({
+    title : new FormControl(),
+    realisator : new FormControl(),
+    actor : new FormControl(),
+  });
 
   constructor(
     private readonly movieServ : MovieService,
@@ -39,23 +46,23 @@ export class ChoixOscarsComponent implements OnInit {
       this.cdRef.markForCheck();
     })
   }
-  
+
   public updateOscars(){
     this.oscars.forEach(oscar => {
       this.oscarServ.addOscarVote(oscar);
     });
   }
-   
+
   public updateOscarTitle(title: string){
     this.checkvote("Meilleur film");
     this.oscars.find(x=>x.name === "Meilleur film").vote.push(title);
   }
-   
+
   public updateOscarRealisator(realisator: string){
     this.checkvote("Meilleur réalisateur");
     this.oscars.find(x=>x.name === "Meilleur réalisateur").vote.push(realisator);
   }
-   
+
   public updateOscarActor(actor: string){
     this.checkvote("Meilleur acteur");
     this.oscars.find(x=>x.name === "Meilleur acteur").vote.push(actor);
@@ -69,7 +76,7 @@ export class ChoixOscarsComponent implements OnInit {
       this.cdRef.markForCheck();
     })
   }
-  
+
   public checkvote(oscarName: string){
     if(this.oscars.find(x=>x.name === oscarName).vote.length > this.oscarsOriginal.find(x=>x.name === oscarName).vote.length){
       this.oscars.find(x=>x.name === oscarName).vote.pop();

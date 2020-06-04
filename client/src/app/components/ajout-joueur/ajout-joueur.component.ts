@@ -39,11 +39,13 @@ export class AjoutJoueurComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.data._id
     this.loadCategories();
+    console.log(this.categories);
   }
 
   public ajoutJoueur(){
-    //TODO Modifier categorieAjour pour distribuer aléatoirement
-    const categorieAjout = this.categories[0];
+    const categorieAjout = this.attribuerCategorie(this.categories);
+    console.log(categorieAjout);
+
     let adminChoix : boolean;
     if(this.ajoutJoueurForm.get('isAdministrateur').value == null){
       adminChoix = false;
@@ -57,6 +59,8 @@ export class AjoutJoueurComponent implements OnInit {
       admin : adminChoix,
       gameId : this.gameId
     })
+
+    console.log(this.joueurAjout);
     this.addJoueurSubscription = this.playerServ
       .addPlayer(this.joueurAjout)
       .subscribe(data => {
@@ -69,9 +73,15 @@ export class AjoutJoueurComponent implements OnInit {
     this.getCategorieSubscription = this.gameServ
     .getCategories(this.gameId)
     .subscribe(data => {
+      console.log(data);
       this.categories = data.categories;
       this.cdRef.markForCheck();
     })
+  }
+
+  public attribuerCategorie(categories : CategorieM[]) : CategorieM{
+    const entierAleatoire = Math.floor(Math.random() * (categories.length - 0+1)) + 0;
+    return categories[entierAleatoire];
   }
 
   openSnackBar(message: string, action: string) {

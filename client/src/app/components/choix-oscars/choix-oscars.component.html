@@ -8,9 +8,9 @@
         </mat-select>
     </mat-form-field>
 
-    <h4>Oscar du meilleur réalisateur</h4>
+    <h4>Oscar du meilleur realisateur</h4>
     <mat-form-field>
-        <mat-label>Réalisateur</mat-label>
+        <mat-label>Realisateur</mat-label>
         <mat-select formControlName="realisator">
             <mat-option>None</mat-option>
             <mat-option *ngFor="let movie of movieTab" [value]="movie.realisator" (selectionChange)="updateOscarRealisator($event.value)">{{movie.realisator}}</mat-option>
@@ -22,7 +22,7 @@
         <mat-label>Acteur</mat-label>
         <mat-select formControlName="actor">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let movie of movieTab" [value]="movie.actor.name" (selectionChange)="updateOscarActor($event.value)">{{movie.actors.name}}</mat-option>
+            <mat-option *ngFor="let movie of movieTab" (selectionChange)="updateOscarActor($event.value)">{{movie.actors}}</mat-option>
         </mat-select>
     </mat-form-field>
     <button (onclick)="updateOscars()"></button>

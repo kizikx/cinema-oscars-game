@@ -22,6 +22,8 @@ import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChoixOscarsComponent } from './components/choix-oscars/choix-oscars.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ChoixOscarsComponent } from './components/choix-oscars/choix-oscars.com
     BrowserAnimationsModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
   entryComponents: [
     AjoutGameComponent
