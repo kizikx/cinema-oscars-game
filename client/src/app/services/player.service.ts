@@ -31,7 +31,6 @@ export class PlayerService {
   }
 
   public addPlayer(player : PlayerM): Observable<PlayerM>{
-    //TODO Bug sur le post
     this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionPlayer);
     return this.http.post<PlayerM>(this.route, player, this.httpOptions)
     .pipe(

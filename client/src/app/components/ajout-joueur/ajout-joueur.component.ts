@@ -39,12 +39,10 @@ export class AjoutJoueurComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.data._id
     this.loadCategories();
-    console.log(this.categories);
   }
 
   public ajoutJoueur(){
     const categorieAjout = this.attribuerCategorie(this.categories);
-    console.log(categorieAjout);
 
     let adminChoix : boolean;
     if(this.ajoutJoueurForm.get('isAdministrateur').value == null){
@@ -61,6 +59,7 @@ export class AjoutJoueurComponent implements OnInit {
     })
 
     console.log(this.joueurAjout);
+
     this.addJoueurSubscription = this.playerServ
       .addPlayer(this.joueurAjout)
       .subscribe(data => {
@@ -74,7 +73,6 @@ export class AjoutJoueurComponent implements OnInit {
     this.getCategorieSubscription = this.gameServ
     .getCategories(this.gameId)
     .subscribe(data => {
-      console.log(data);
       this.categories = data.categories;
       this.cdRef.markForCheck();
     })
