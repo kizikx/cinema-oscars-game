@@ -2,21 +2,21 @@
   <div [formGroup] = "ajoutMovieForm">
     <mat-form-field>
       <mat-label>Titre</mat-label>
-      <input matInput type="text" formControlName="title">
+      <input matInput type="text" required formControlName="title">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Realisateur</mat-label>
-      <input matInput type="text" formControlName="realisator">
+      <input matInput type="text" required formControlName="realisator">
     </mat-form-field>
     <ng-container *ngIf="categorieLibre">
       <mat-form-field>
         <mat-label>Saisir la categorie</mat-label>
-        <input matInput type="text" formControlName="category">
+        <input matInput type="text" required formControlName="category">
       </mat-form-field>
     </ng-container>
     <mat-form-field>
       <mat-label>Duree</mat-label>
-      <input matInput type="number" formControlName="duration">
+      <input matInput type="number" required formControlName="duration">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Pays</mat-label>
