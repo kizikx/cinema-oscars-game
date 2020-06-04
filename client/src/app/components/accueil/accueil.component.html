@@ -5,4 +5,9 @@
     <button mat-flat-button color="primary" (click)="openDialog()">Creer une partie</button>
   </div>
 </div>
-<app-liste-games></app-liste-games>
+<h3>Parties :</h3>
+<mat-grid-list cols="4" rowHeight="4:1">
+  <ng-container *ngFor="let game of games">
+    <mat-grid-tile [routerLink]="['/pageJeu', game._id]">{{game.name}}</mat-grid-tile>
+  </ng-container>
+</mat-grid-list>

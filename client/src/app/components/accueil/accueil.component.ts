@@ -16,7 +16,8 @@ import { Router } from '@angular/router';
 export class AccueilComponent implements OnInit {
 
   private getGameSubscription : Subscription;
-  private getCategoriesSubscription : Subscription;
+  private getCategoriesSubscription: Subscription;
+  public games: GameM[];
 
   constructor(
     public dialog: MatDialog,
@@ -26,6 +27,7 @@ export class AccueilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loadGame();
   }
 
   openDialog(): void {
@@ -34,7 +36,17 @@ export class AccueilComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Pop up closed');
+      console.log('Pop up closed')
+      this.loadGame();;
     });
+  }
+
+  public loadGame() {
+    this.getGameSubscription = this.gameServ
+      .getGame()
+      .subscribe(data => {
+        this.games = data;
+        this.cdRef.markForCheck();
+      })
   }
 }
