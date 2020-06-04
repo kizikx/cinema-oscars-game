@@ -12,6 +12,7 @@ import { OscarM } from '../shared/models/oscar-m';
 })
 export class OscarService {
   private gameId : string;
+  private oscarId : string;
   private route : string;
   private httpOptions = {
     headers: new HttpHeaders({
@@ -39,7 +40,7 @@ export class OscarService {
   }
 
   public addOscarVote(oscar : OscarM): Observable<OscarM>{
-    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionOscar);
+    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionOscar, oscar._id);
     return this.http.post<OscarM>(this.route, oscar, this.httpOptions)
    .pipe(
      map(item => new OscarM(item))
@@ -48,5 +49,9 @@ export class OscarService {
 
   public setGameId(gameId : string){
     this.gameId = "/"+gameId;
+  }
+
+  public setOscarId(oscarId : string){
+    this.oscarId = "/"+oscarId;
   }
 }

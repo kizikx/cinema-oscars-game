@@ -2,7 +2,9 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { GameM } from 'src/app/shared/models/game-m';
 import { OscarM } from 'src/app/shared/models/oscar-m';
 import { MatDialog } from '@angular/material/dialog';
+import { OscarService } from 'src/app/services/oscar.service';
 import {ActivatedRoute} from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
 
 @Component({
@@ -13,13 +15,27 @@ import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
 export class PageJeuComponent implements OnInit {
 
   public gameId : any;
-  public OscarFilm : OscarM;
-  public OscarActeur : OscarM;
-  public OscarRéalisateur : OscarM;
+  private addOscarSubscription : Subscription;
+  public OscarFilm = new OscarM ({
+    gameId : this.gameId,
+    name : "Meilleur film",
+    description : "Oscar récompensant le meilleur film",
+    vote: []});
+  public OscarActeur = new OscarM ({
+    gameId : this.gameId,
+    name : "Meilleur acteur",
+    description : "Oscar récompensant le meilleur acteur",
+    vote: []});
+  public OscarRealisateur = new OscarM ({
+    gameId : this.gameId,
+    name : "Meilleur réalisateur",
+    description : "Oscar récompensant le meilleur réalisateur",
+    vote: []});
 
   constructor(
     public dialog: MatDialog,
     private readonly cdRef : ChangeDetectorRef,
+    private readonly oscarServ : OscarService,
     private router: ActivatedRoute
   ) { }
 
@@ -30,8 +46,18 @@ export class PageJeuComponent implements OnInit {
   }
 
   public ajoutOscars(){
-    this.addGameSubscription = this.gameServ
-      .addOscars(this.gameAjout)
+    this.addOscarSubscription = this.oscarServ
+      .createOscar(this.OscarFilm)
+      .subscribe(data => {
+        this.cdRef.markForCheck();
+      })
+    this.addOscarSubscription = this.oscarServ
+      .createOscar(this.OscarActeur)
+      .subscribe(data => {
+        this.cdRef.markForCheck();
+      })
+    this.addOscarSubscription = this.oscarServ
+      .createOscar(this.OscarRealisateur)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
