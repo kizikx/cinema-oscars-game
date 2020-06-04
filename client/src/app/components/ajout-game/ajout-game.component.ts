@@ -37,7 +37,6 @@ export class AjoutGameComponent implements OnInit {
   }
 
   public ajoutGame(){
-    console.log(this.categories);
     this.gameAjout = new GameM({
       name : this.ajoutGameForm.get('nomGame').value,
       categories : this.categories,

@@ -27,8 +27,6 @@ export class GameService {
   }
 
   public addGame(game : GameM):Observable<GameM>{
-    console.log(game);
-    console.log(this.route);
     return this.http.post<GameM>(this.route, game, this.httpOptions)
     .pipe(
       map(item => new GameM(item))
@@ -36,7 +34,6 @@ export class GameService {
   }
 
   public getCategories(gameId : string): Observable<GameM> {
-    console.log(this.route+'/'+gameId);
     return this.http.get<GameM>(this.route+'/'+gameId)
     .pipe(
       map(data => new GameM(data))

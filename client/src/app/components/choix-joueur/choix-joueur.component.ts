@@ -26,6 +26,7 @@ export class ChoixJoueurComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data.category.name);
   }
 
   public addMovie(){
