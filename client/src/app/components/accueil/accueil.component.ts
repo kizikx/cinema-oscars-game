@@ -17,7 +17,6 @@ export class AccueilComponent implements OnInit {
 
   private getGameSubscription : Subscription;
   private getCategoriesSubscription : Subscription;
-  private game : GameM[];
 
   constructor(
     public dialog: MatDialog,
@@ -27,16 +26,6 @@ export class AccueilComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getGame();
-  }
-
-  public getGame(){
-    this.getGameSubscription = this.gameServ
-    .getGame()
-    .subscribe(data => {
-      this.game = data;
-      this.cdRef.markForCheck();
-    })
   }
 
   openDialog(): void {

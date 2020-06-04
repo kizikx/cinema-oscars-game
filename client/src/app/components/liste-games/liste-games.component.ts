@@ -27,12 +27,7 @@ export class ListeGamesComponent implements OnInit {
     .getGame()
     .subscribe(data => {
       this.games = data;
-      console.log(this.games);
       this.cdRef.markForCheck();
     })
-  }
-
-  public playGame(game : GameM){
-    console.log(game._id);
   }
 }

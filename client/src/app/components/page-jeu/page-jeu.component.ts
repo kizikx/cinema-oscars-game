@@ -1,7 +1,11 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { GameM } from 'src/app/shared/models/game-m';
+import { OscarM } from 'src/app/shared/models/oscar-m';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { OscarService } from 'src/app/services/oscar.service';
+import {ActivatedRoute} from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
 
 @Component({
   selector: 'app-page-jeu',
@@ -10,15 +14,53 @@ import { Router } from '@angular/router';
 })
 export class PageJeuComponent implements OnInit {
 
-  @Input() game : GameM;
+  public gameId : any;
+  private addOscarSubscription : Subscription;
+  public OscarFilm = new OscarM ({
+    gameId : this.gameId,
+    name : "Meilleur film",
+    description : "Oscar récompensant le meilleur film",
+    vote: []});
+  public OscarActeur = new OscarM ({
+    gameId : this.gameId,
+    name : "Meilleur acteur",
+    description : "Oscar récompensant le meilleur acteur",
+    vote: []});
+  public OscarRealisateur = new OscarM ({
+    gameId : this.gameId,
+    name : "Meilleur réalisateur",
+    description : "Oscar récompensant le meilleur réalisateur",
+    vote: []});
 
   constructor(
     public dialog: MatDialog,
     private readonly cdRef : ChangeDetectorRef,
-    private router: Router
+    private readonly oscarServ : OscarService,
+    private router: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.router.params.subscribe(params => {
+      this.gameId = params.gameId;
+    })
+  }
+
+  public ajoutOscars(){
+    this.addOscarSubscription = this.oscarServ
+      .createOscar(this.OscarFilm)
+      .subscribe(data => {
+        this.cdRef.markForCheck();
+      })
+    this.addOscarSubscription = this.oscarServ
+      .createOscar(this.OscarActeur)
+      .subscribe(data => {
+        this.cdRef.markForCheck();
+      })
+    this.addOscarSubscription = this.oscarServ
+      .createOscar(this.OscarRealisateur)
+      .subscribe(data => {
+        this.cdRef.markForCheck();
+      })
   }
 
   public supprimerJoueur(){
@@ -26,8 +68,11 @@ export class PageJeuComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(PageJeuComponent, {
+    const dialogRef = this.dialog.open(AjoutJoueurComponent, {
       width: '300px',
+      data: {
+        _id : this.gameId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

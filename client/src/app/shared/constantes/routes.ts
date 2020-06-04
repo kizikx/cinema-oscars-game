@@ -1,13 +1,25 @@
 import { environment } from 'src/environments/environment';
 
-export abstract class Routes {
+export  class Routes {
   static readonly game: string = '/game';
-  static readonly movie: string = '/game//movie';
-  static readonly player: string = '/game//player';
-  static readonly vote: string = '/game//vote';
 
-  static getApiRoute(route : String){
-    console.log(environment.api.uri+route);
-    return environment.api.uri+route;
+  static readonly extensionMovie = '/movie';
+  static readonly extensionPlayer = '/player';
+  static readonly extensionVote = '/vote';
+  static readonly extensionOscar = '/oscar';
+  // static readonly movie: string = '/game/:gameId/movie';
+  // static readonly player: string = '/game/:gameId/player';
+  // static readonly vote: string = '/game/:gameId/vote';
+
+  static getApiRoute(route : string, gameId? : string, extension? : string, id? : string){
+    if(gameId && extension && id){
+      return environment.api.uri+route+gameId+extension+id;
+    } else if(gameId && extension){
+      return environment.api.uri+route+gameId+extension;
+    } else if (gameId)
+      return environment.api.uri+route+gameId;
+    else {
+      return environment.api.uri+route;
+    }
   }
 }

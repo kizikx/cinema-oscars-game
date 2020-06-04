@@ -1,6 +1,12 @@
-<h3>Joueurs :</h3>
+<h3>Joueurs</h3>
 <mat-grid-list cols="2" rowHeight="2:1">
   <ng-container *ngFor="let joueur of joueurs">
-    <mat-grid-tile>{{joueur.name}}</mat-grid-tile>
+    <!-- <ng-container *ngIf="joueur.choix == false"> -->
+      <mat-grid-tile (click)="openDialog(joueur)">{{joueur.name}} (Choisir les films)</mat-grid-tile>
+    <!-- </ng-container> -->
+
+    <!-- <ng-container *ngIf="joueur.choix == true">
+      <mat-grid-tile (click)="openDialog()">{{joueur.name}} (Choix deja fait)</mat-grid-tile>
+    </ng-container> -->
   </ng-container>
 </mat-grid-list>

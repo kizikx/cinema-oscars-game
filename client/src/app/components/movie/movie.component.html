@@ -1,56 +1,53 @@
-<div [formGroup] = "ajoutMovieForm">
-  <mat-form-field>
-    <mat-label>Titre</mat-label>
-    <input matInput type="text" formControlName="title">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Realisateur</mat-label>
-    <input matInput type="text" formControlName="realisator">
-  </mat-form-field>
-  <ng-container *ngIf="categorieLibre">
+<div mat-dialog-content>
+  <div [formGroup] = "ajoutMovieForm">
     <mat-form-field>
-      <mat-label>Saisir la categorie</mat-label>
-      <input matInput type="text" formControlName="category">
+      <mat-label>Titre</mat-label>
+      <input matInput type="text" formControlName="title">
     </mat-form-field>
-  </ng-container>
-  <mat-form-field>
-    <mat-label>Duree</mat-label>
-    <input matInput type="number" formControlName="duration">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Pays</mat-label>
-    <input matInput type="text" formControlName="country">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Description du film</mat-label>
-    <input matInput type="text" formControlName="description">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Realisateur</mat-label>
+      <input matInput type="text" formControlName="realisator">
+    </mat-form-field>
+    <ng-container *ngIf="categorieLibre">
+      <mat-form-field>
+        <mat-label>Saisir la categorie</mat-label>
+        <input matInput type="text" formControlName="category">
+      </mat-form-field>
+    </ng-container>
+    <mat-form-field>
+      <mat-label>Duree</mat-label>
+      <input matInput type="number" formControlName="duration">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Pays</mat-label>
+      <input matInput type="text" formControlName="country">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description du film</mat-label>
+      <input matInput type="text" formControlName="description">
+    </mat-form-field>
+  </div>
 </div>
 
+<h3>Acteur du film</h3>
 <div [formGroup] = "ajoutActeurForm">
   <mat-form-field>
     <mat-label>Nom</mat-label>
     <input matInput type="text" formControlName="name">
   </mat-form-field>
-  <mat-form-field>
-    <section class="section">
-      <mat-label>Sexe</mat-label>
-      <mat-checkbox class="margin" formControlName="male">Homme</mat-checkbox>
-      <mat-checkbox class="margin" formControlName="male">Femme</mat-checkbox>
-    </section>
-  </mat-form-field>
+  <mat-checkbox class="margin" formControlName="male">Homme</mat-checkbox>
+  <mat-checkbox class="margin" formControlName="male">Femme</mat-checkbox>
   <div mat-dialog-actions>
     <button mat-button type="submit" (click)="ajoutActeurs()" cdkFocusInitial>Ajouter</button>
   </div>
 </div>
+<br>
 
-<h3>Acteurs ajoutees :</h3>
-<ng-container *ngFor="let acteur of acteurs">
-  <div>
-    {{acteur.name}}
-  </div>
+<ng-container *ngIf="acteurs.length > 0">
+  <h3>Acteurs ajoutees :</h3>
+  <ng-container *ngFor="let acteur of acteurs">
+    <div>
+      {{acteur.name}}
+    </div>
+  </ng-container>
 </ng-container>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="ajoutMovie()" cdkFocusInitial>Valider</button>
-</div>

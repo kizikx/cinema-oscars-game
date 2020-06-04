@@ -47,7 +47,7 @@ export class MovieComponent implements OnInit {
       category : this.ajoutMovieForm.get('category').value,
       duration : this.ajoutMovieForm.get('duration').value,
       country : this.ajoutMovieForm.get('country').value,
-      actors : this.ajoutMovieForm.get('actors').value,
+      actors : this.acteurs,
       description : this.ajoutMovieForm.get('description').value,
     })
 
