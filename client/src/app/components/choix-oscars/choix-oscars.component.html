@@ -25,5 +25,5 @@
             <mat-option *ngFor="let movie of movieTab" (selectionChange)="updateOscarActor($event.value)">{{movie.actors}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <button (onclick)="updateOscars()"></button>
+    <button mat-flat-button (onclick)="updateOscars()" color="primary"></button>
 </form>

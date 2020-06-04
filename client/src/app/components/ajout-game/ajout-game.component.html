@@ -15,7 +15,7 @@
       <input matInput type="text" formControlName="descriptionCategorie">
     </mat-form-field>
     <div mat-dialog-actions>
-      <button mat-button (click)="ajoutCategories()" cdkFocusInitial>Ajouter la categorie</button>
+      <button mat-flat-button color="primary" (click)="ajoutCategories()" cdkFocusInitial>Ajouter la categorie</button>
     </div>
   </div>
 </div>
@@ -30,6 +30,6 @@
 </ng-container>
 
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Annuler</button>
-  <button mat-button (click)="ajoutGame()" cdkFocusInitial>Valider</button>
+  <button mat-flat-button color="primary" (click)="onNoClick()">Annuler</button>
+  <button mat-flat-button color="primary" (click)="ajoutGame()" cdkFocusInitial>Valider</button>
 </div>

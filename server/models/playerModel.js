@@ -10,7 +10,7 @@ let PlayerSchema = new Schema(
     category: {
       name: {type: String},
       description: {type: String},
-      sent: {type: String}
+      sent: {type: Boolean}
     },
   }
 );
