@@ -6,6 +6,7 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { MovieService } from 'src/app/services/movie.service';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-choix-joueur',
@@ -22,17 +23,19 @@ export class ChoixJoueurComponent implements OnInit {
     private readonly movieServ : MovieService,
     private readonly cdRef : ChangeDetectorRef,
     public dialogRef: MatDialogRef<ChoixJoueurComponent>,
+    private _snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: PlayerM
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data.category.name);
+
   }
 
   public addMovie(){
     this.movieServ.setGameId(this.data.gameId);
     this.filmLibreAjout.gameId = this.data.gameId;
     this.filmCategorie.gameId = this.data.gameId;
+    this.filmCategorie.category = this.data.category.name;
     this.addMovieSubscription = this.movieServ
       .addMovie(this.filmLibreAjout)
       .subscribe(data => {
@@ -44,6 +47,7 @@ export class ChoixJoueurComponent implements OnInit {
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
+    this.openSnackBar(this.filmLibreAjout.title+" et "+this.filmCategorie.title,"Choix des films");
   }
 
   onNoClick(): void {
@@ -56,5 +60,12 @@ export class ChoixJoueurComponent implements OnInit {
 
   getFilmChoixLibre(movie : MovieM){
     this.filmLibreAjout = movie;
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+    this.onNoClick();
   }
 }
