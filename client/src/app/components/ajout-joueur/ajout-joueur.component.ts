@@ -79,7 +79,7 @@ export class AjoutJoueurComponent implements OnInit {
   }
 
   public attribuerCategorie(categories : CategorieM[]) : CategorieM{
-    const entierAleatoire = Math.floor(Math.random() * categories.length) + 1  ;
+    const entierAleatoire = Math.floor(Math.random() * categories.length);
     return categories[entierAleatoire];
   }
 
