@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { PlayerM } from 'src/app/shared/models/player-m';
 import { MatDialogRef } from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-choix-joueur',
@@ -10,12 +11,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ChoixJoueurComponent implements OnInit {
 
-  public nomFilm : string;
-  public categorieAttribut : CategorieM;
-  public joueur : PlayerM;
-
   constructor(
-    public dialogRef: MatDialogRef<ChoixJoueurComponent>
+    public dialogRef: MatDialogRef<ChoixJoueurComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: PlayerM
   ) { }
 
   ngOnInit(): void {

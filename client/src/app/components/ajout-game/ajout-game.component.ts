@@ -5,6 +5,7 @@ import { GameM } from 'src/app/shared/models/game-m';
 import { GameService } from 'src/app/services/game.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ajout-game',
@@ -15,8 +16,8 @@ export class AjoutGameComponent implements OnInit {
 
   private addGameSubscription : Subscription;
   private getCategoriesSubscription : Subscription;
-  public gameAjout : GameM;
   public categories : CategorieM[] = [];
+  public gameAjout : GameM;
 
   public ajoutGameForm = new FormGroup({
     nomGame : new FormControl(),
@@ -27,7 +28,8 @@ export class AjoutGameComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AjoutGameComponent>,
     private readonly gameServ : GameService,
-    private readonly cdRef : ChangeDetectorRef
+    private readonly cdRef : ChangeDetectorRef,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -35,11 +37,18 @@ export class AjoutGameComponent implements OnInit {
   }
 
   public ajoutGame(){
+    console.log(this.categories);
+    this.gameAjout = new GameM({
+      name : this.ajoutGameForm.get('nomGame').value,
+      categories : this.categories,
+      onGoing : true
+    })
     this.addGameSubscription = this.gameServ
       .addGame(this.gameAjout)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
+      this.openSnackBar(this.gameAjout.name,"Ajout de la partie");
   }
 
   public ajoutCategories(){
@@ -52,6 +61,13 @@ export class AjoutGameComponent implements OnInit {
 
   public supprimerCategories(){
     //TODO Supprimer les categories ajoutees
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+    this.onNoClick();
   }
 
   onNoClick(): void {

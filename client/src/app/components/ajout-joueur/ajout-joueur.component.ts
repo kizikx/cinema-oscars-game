@@ -1,11 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { PlayerM } from 'src/app/shared/models/player-m';
 import { Subscription } from 'rxjs';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GameService } from 'src/app/services/game.service';
 import { PlayerService } from 'src/app/services/player.service';
 import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { FormGroup, FormControl } from '@angular/forms';
+import { GameM } from 'src/app/shared/models/game-m';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ajout-joueur',
@@ -16,8 +18,9 @@ export class AjoutJoueurComponent implements OnInit {
 
   private addJoueurSubscription : Subscription;
   private getCategorieSubscription : Subscription;
-  public joueurAjout : PlayerM;
   public categories : CategorieM[] = [];
+  public joueurAjout : PlayerM;
+  public gameId : string;
 
   public ajoutJoueurForm = new FormGroup({
     nomJoueur : new FormControl(),
@@ -28,28 +31,54 @@ export class AjoutJoueurComponent implements OnInit {
     public dialogRef: MatDialogRef<AjoutJoueurComponent>,
     private readonly playerServ : PlayerService,
     private readonly gameServ : GameService,
-    private readonly cdRef : ChangeDetectorRef
+    private readonly cdRef : ChangeDetectorRef,
+    private _snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: GameM
   ) { }
 
   ngOnInit(): void {
-
+    this.gameId = this.data._id
+    this.loadCategories();
   }
 
   public ajoutJoueur(){
+    //TODO Modifier categorieAjour pour distribuer aléatoirement
+    const categorieAjout = this.categories[0];
+    let adminChoix : boolean;
+    if(this.ajoutJoueurForm.get('isAdministrateur').value == null){
+      adminChoix = false;
+    } else {
+      adminChoix = true;
+    }
+
+    this.joueurAjout = new PlayerM({
+      name : this.ajoutJoueurForm.get('nomJoueur').value,
+      category : categorieAjout,
+      admin : adminChoix,
+      gameId : this.gameId
+    })
     this.addJoueurSubscription = this.playerServ
       .addPlayer(this.joueurAjout)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
+    this.openSnackBar(this.joueurAjout.name,"Ajout du joueur");
   }
 
   public loadCategories(){
     this.getCategorieSubscription = this.gameServ
-    .getCategories()
+    .getCategories(this.gameId)
     .subscribe(data => {
-      this.categories = data.map(({categories}) => categories);
+      this.categories = data.categories;
       this.cdRef.markForCheck();
     })
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+    this.onNoClick();
   }
 
   onNoClick(): void {

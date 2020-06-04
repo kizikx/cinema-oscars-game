@@ -27,16 +27,19 @@ export class GameService {
   }
 
   public addGame(game : GameM):Observable<GameM>{
+    console.log(game);
+    console.log(this.route);
     return this.http.post<GameM>(this.route, game, this.httpOptions)
     .pipe(
       map(item => new GameM(item))
     );
   }
 
-  public getCategories(): Observable<GameM[]> {
-    return this.http.get<GameM[]>(this.route)
+  public getCategories(gameId : string): Observable<GameM> {
+    console.log(this.route+'/'+gameId);
+    return this.http.get<GameM>(this.route+'/'+gameId)
     .pipe(
-      map(data => data.map(item => new GameM(item)))
+      map(data => new GameM(data))
     );
   }
 }

@@ -3,6 +3,6 @@ import { CategorieI } from './categorie-i';
 export interface GameI {
   _id : string,
   name : string,
-  categories : CategorieI,
+  categories : CategorieI[],
   onGoing : boolean
 }
