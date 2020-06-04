@@ -16,6 +16,8 @@ export class ChoixOscarsComponent implements OnInit {
   private getOscarSubscription : Subscription;
   public movieTab : MovieM[];
   private oscars : OscarM[];
+  private oscarsOriginal : OscarM[];
+  private voteSize : [];
 
   constructor(
     private readonly movieServ : MovieService,
@@ -33,6 +35,7 @@ export class ChoixOscarsComponent implements OnInit {
     .getOscar()
     .subscribe(data => {
       this.oscars = data;
+      this.oscarsOriginal = data;
       this.cdRef.markForCheck();
     })
   }
@@ -44,14 +47,17 @@ export class ChoixOscarsComponent implements OnInit {
   }
    
   public updateOscarTitle(title: string){
+    this.checkvote("Meilleur film");
     this.oscars.find(x=>x.name === "Meilleur film").vote.push(title);
   }
    
   public updateOscarRealisator(realisator: string){
+    this.checkvote("Meilleur réalisateur");
     this.oscars.find(x=>x.name === "Meilleur réalisateur").vote.push(realisator);
   }
    
   public updateOscarActor(actor: string){
+    this.checkvote("Meilleur acteur");
     this.oscars.find(x=>x.name === "Meilleur acteur").vote.push(actor);
   }
 
@@ -63,5 +69,10 @@ export class ChoixOscarsComponent implements OnInit {
       this.cdRef.markForCheck();
     })
   }
-
+  
+  public checkvote(oscarName: string){
+    if(this.oscars.find(x=>x.name === oscarName).vote.length > this.oscarsOriginal.find(x=>x.name === oscarName).vote.length){
+      this.oscars.find(x=>x.name === oscarName).vote.pop();
+    }
+  }
 }
