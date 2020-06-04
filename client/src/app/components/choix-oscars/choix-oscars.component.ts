@@ -18,7 +18,6 @@ export class ChoixOscarsComponent implements OnInit {
   public movieTab : MovieM[];
   private oscars : OscarM[];
   private oscarsOriginal : OscarM[];
-  private voteSize : [];
 
   public ajoutOscarForm = new FormGroup({
     title : new FormControl(),
