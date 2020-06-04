@@ -66,7 +66,8 @@ export class AjoutJoueurComponent implements OnInit {
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
-    this.openSnackBar(this.joueurAjout.name,"Ajout du joueur");
+    this.openSnackBar(this.joueurAjout.name, "Ajout du joueur");
+
   }
 
   public loadCategories(){
