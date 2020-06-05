@@ -32,7 +32,8 @@ export class ChoixJoueurComponent implements OnInit {
     this.joueurChoix = this.data;
   }
 
-  public addMovie(){
+  public addMovie() {
+    this.data.category.sent = true;
     this.movieServ.setGameId(this.data.gameId);
     this.filmLibreAjout.gameId = this.data.gameId;
     this.filmCategorie.gameId = this.data.gameId;
