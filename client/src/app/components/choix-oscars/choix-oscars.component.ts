@@ -1,11 +1,13 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovieService } from 'src/app/services/movie.service';
 import { OscarService } from 'src/app/services/oscar.service';
 import { Subscription } from 'rxjs';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { OscarM } from 'src/app/shared/models/oscar-m';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { GameM } from '../../shared/models/game-m';
 
 @Component({
   selector: 'app-choix-oscars',
@@ -18,7 +20,8 @@ export class ChoixOscarsComponent implements OnInit {
   private getOscarSubscription : Subscription;
   public movieTab : MovieM[];
   private oscars : OscarM[];
-  private oscarsOriginal : OscarM[];
+  private oscarsOriginal: OscarM[];
+  public gameId: string;
 
   public ajoutOscarForm = new FormGroup({
     title : new FormControl(),
@@ -30,10 +33,13 @@ export class ChoixOscarsComponent implements OnInit {
     public dialogRef: MatDialogRef<ChoixOscarsComponent>,
     private readonly movieServ : MovieService,
     private readonly oscarServ : OscarService,
-    private readonly cdRef : ChangeDetectorRef
+    private readonly cdRef: ChangeDetectorRef,
+    private _snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: GameM
   ) { }
 
   ngOnInit(): void {
+    this.gameId = this.data._id
     this.loadOscar();
     this.loadMovie();
   }
@@ -82,6 +88,13 @@ export class ChoixOscarsComponent implements OnInit {
     if(this.oscars.find(x=>x.name === oscarName).vote.length > this.oscarsOriginal.find(x=>x.name === oscarName).vote.length){
       this.oscars.find(x=>x.name === oscarName).vote.pop();
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+    this.onNoClick();
   }
 
   onNoClick(): void {

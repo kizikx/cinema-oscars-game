@@ -11,7 +11,7 @@
 
     <mat-grid-tile *ngIf="moviesChose == false" (click)="openDialog2(joueur)">Joueur : {{joueur.name}} (Choisir les films)</mat-grid-tile>
 
-    <mat-grid-tile *ngIf="moviesChose == true" (click)="openDialog2(joueur)">Joueur : {{joueur.name}} (Voter pour les oscars)</mat-grid-tile>
+    <mat-grid-tile *ngIf="moviesChose == true" (click)="openDialog3()">{{joueur.name}} (Voter pour les oscars)</mat-grid-tile>
     <!-- </ng-container> -->
     <!-- <ng-container *ngIf="joueur.choix == true">
     <mat-grid-tile (click)="openDialog()">{{joueur.name}} (Choix deja fait)</mat-grid-tile>

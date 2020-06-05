@@ -9,6 +9,7 @@ import { PlayerM } from 'src/app/shared/models/player-m';
 import { PlayerService } from 'src/app/services/player.service';
 import { ChoixJoueurComponent } from '../choix-joueur/choix-joueur.component';
 import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
+import { ChoixOscarsComponent } from '../choix-oscars/choix-oscars.component';
 @Component({
   selector: 'app-page-jeu',
   templateUrl: './page-jeu.component.html',
@@ -47,7 +48,10 @@ export class PageJeuComponent implements OnInit {
     private router: ActivatedRoute,
     public dialog2: MatDialog,
     private readonly playerServ: PlayerService,
-    private readonly cdRef2: ChangeDetectorRef
+    private readonly cdRef2: ChangeDetectorRef,
+    public dialog3: MatDialog,
+    private readonly cdRef3: ChangeDetectorRef
+
   ) { }
 
   ngOnInit(): void {
@@ -88,7 +92,6 @@ export class PageJeuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Pop up closed');
       this.loadJoueurs();
     });
   }
@@ -129,7 +132,7 @@ export class PageJeuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Pop up closed');
+      console.log(result);
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
         if (joueur.category.sent != true) {
@@ -137,6 +140,19 @@ export class PageJeuComponent implements OnInit {
         }
       })
       this.moviesChose = bool;
+    });
+  }
+
+  openDialog3(): void {
+    const dialogRef = this.dialog3.open(ChoixOscarsComponent, {
+      width: '300px',
+      data: {
+        _id: this.gameId
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
     });
   }
 }
