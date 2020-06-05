@@ -81,7 +81,7 @@ export class ChoixOscarsComponent implements OnInit {
 
   public loadMovie(){
     this.getMovieSubscription = this.movieServ
-    .getMovie()
+    .getMovieByGameId()
     .subscribe(data => {
       this.movieTab = data;
     //  let toto: ActeurM[];
