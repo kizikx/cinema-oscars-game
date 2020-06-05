@@ -16,8 +16,10 @@ import { AjoutJoueurComponent } from '../ajout-joueur/ajout-joueur.component';
 })
 export class PageJeuComponent implements OnInit {
 
+
+  moviesChose: boolean = false;
   public gameId : any;
-  private addOscarSubscription : Subscription;
+  private addOscarSubscription: Subscription;
   public OscarFilm = new OscarM ({
     gameId : this.gameId,
     name : "Meilleur film",
@@ -102,6 +104,7 @@ export class PageJeuComponent implements OnInit {
   }
 
   openDialog2(joueurChoix: PlayerM): void {
+    let validate: boolean = false;
     const dialogRef = this.dialog2.open(ChoixJoueurComponent, {
       width: '300px',
       data: {
@@ -110,9 +113,16 @@ export class PageJeuComponent implements OnInit {
         gameId: this.gameId
       }
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       console.log('Pop up closed');
+      let bool: boolean = true;
+      this.joueurs.forEach(function (joueur) {
+        if (joueur.category.sent != true) {
+          bool = false;
+        }
+      })
+      this.moviesChose = bool;
     });
   }
 }

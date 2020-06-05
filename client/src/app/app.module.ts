@@ -28,7 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ResultatComponent } from './components/resultat/resultat/resultat.component';
 import { ClassementComponent } from './components/classement/classement.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
