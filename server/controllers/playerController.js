@@ -14,7 +14,8 @@ module.exports.createPlayer = async(req, res) => {
       name: req.body.name,
       admin: req.body.admin,
       gameId: req.params.gameId,
-      category: req.body.category
+      category: req.body.category,
+      aVote: req.body.aVote,
     });
   
     player.save()
@@ -60,6 +61,9 @@ module.exports.updatePlayer = (req, res) => {
     Player.findOne({_id: req.params.playerId}, (err, foundObject) => {
       if (req.body.catagories !== undefined) {
         foundObject.catagories.push(req.body.catagories);
+      }
+      if (req.body.aVote !== undefined) {
+        foundObject.aVote.push(req.body.aVote);
       }
       foundObject.save((err, updatedObject) => {
           if (err) {

@@ -12,6 +12,7 @@ let PlayerSchema = new Schema(
       description: {type: String},
       sent: {type: Boolean}
     },
+    aVote: {type: Boolean, required: true},
   }
 );
 
