@@ -13,6 +13,7 @@ import { GameM } from '../shared/models/game-m';
 })
 export class PlayerService {
   private gameId : string;
+  private playerId : string;
   private route : string;
   private httpOptions = {
     headers: new HttpHeaders({
@@ -38,7 +39,19 @@ export class PlayerService {
     );
   }
 
+  public patchPlayer(player : PlayerM): Observable<PlayerM>{
+    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionPlayer, this.playerId);
+    return this.http.patch<PlayerM>(this.route, player, this.httpOptions)
+    .pipe(
+      map(item => new PlayerM(item))
+    );
+  }
+
   public setGameId(gameId : string){
     this.gameId = "/"+gameId;
+  }
+
+  public playerGameId(playerId : string){
+    this.playerId = "/"+playerId;
   }
 }
