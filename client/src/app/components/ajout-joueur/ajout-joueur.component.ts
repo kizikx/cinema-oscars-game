@@ -55,10 +55,9 @@ export class AjoutJoueurComponent implements OnInit {
       name : this.ajoutJoueurForm.get('nomJoueur').value,
       category : categorieAjout,
       admin : adminChoix,
-      gameId : this.gameId
-    })
-
-    console.log(this.joueurAjout);
+      gameId : this.gameId,
+      aVote : false
+    });
 
     this.addJoueurSubscription = this.playerServ
       .addPlayer(this.joueurAjout)

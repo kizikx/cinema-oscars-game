@@ -31,7 +31,6 @@ export class MovieService {
   }
 
   public addMovie(movie : MovieM): Observable<MovieM>{
-    console.log(movie);
     this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovie);
     return this.http.post<MovieM>(this.route, movie, this.httpOptions)
    .pipe(

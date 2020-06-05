@@ -18,6 +18,7 @@ export class ChoixJoueurComponent implements OnInit {
   private filmLibreAjout = new MovieM();
   private filmCategorie = new MovieM();
   private addMovieSubscription : Subscription;
+  public joueurChoix : PlayerM;
 
   constructor(
     private readonly movieServ : MovieService,
@@ -28,7 +29,7 @@ export class ChoixJoueurComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.joueurChoix = this.data;
   }
 
   public addMovie(){
@@ -48,7 +49,12 @@ export class ChoixJoueurComponent implements OnInit {
         this.cdRef.markForCheck();
       })
     this.data.category.sent = true;
+    this.updateVoteJoueur();
     this.openSnackBar(this.filmLibreAjout.title+" et "+this.filmCategorie.title,"Choix des films");
+  }
+
+  updateVoteJoueur(){
+    this.joueurChoix.setVote();
   }
 
   onNoClick(): void {

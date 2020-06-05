@@ -4,5 +4,6 @@ export interface PlayerI {
   name : string,
   admin : boolean,
   gameId : string,
-  category : CategorieI
+  category : CategorieI,
+  aVote : boolean
 }

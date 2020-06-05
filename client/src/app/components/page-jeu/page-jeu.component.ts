@@ -103,6 +103,20 @@ export class PageJeuComponent implements OnInit {
       })
   }
 
+  public verifChoix() : boolean{
+    if(this.joueurs){
+      for(let joueur of this.joueurs){
+        console.log(joueur);
+        if(joueur.aVote == false){
+          return false;
+        }
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   openDialog2(joueurChoix: PlayerM): void {
     let validate: boolean = false;
     const dialogRef = this.dialog2.open(ChoixJoueurComponent, {
@@ -113,7 +127,7 @@ export class PageJeuComponent implements OnInit {
         gameId: this.gameId
       }
     });
-    
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('Pop up closed');
       let bool: boolean = true;

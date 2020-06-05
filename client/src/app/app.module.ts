@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AccueilComponent } from './components/accueil/accueil.component';
-import { VoteComponent } from './components/vote/vote.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChoixJoueurComponent } from './components/choix-joueur/choix-joueur.component';
@@ -33,7 +32,6 @@ import { MatRadioModule } from '@angular/material/radio';
     AppComponent,
     MovieComponent,
     AccueilComponent,
-    VoteComponent,
     ChoixJoueurComponent,
     AjoutGameComponent,
     PageJeuComponent,
