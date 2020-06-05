@@ -19,6 +19,7 @@ export class PageJeuComponent implements OnInit {
 
 
   moviesChose: boolean = false;
+  votesOscar: boolean = false;
   public gameId : any;
   private addOscarSubscription: Subscription;
   public OscarFilm = new OscarM ({
@@ -59,6 +60,7 @@ export class PageJeuComponent implements OnInit {
       this.gameId = params.gameId;
     })
     this.loadJoueurs();
+    this.checkFilmChose();
   }
 
   public ajoutOscars(){
@@ -132,27 +134,46 @@ export class PageJeuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
         if (joueur.category.sent != true) {
           bool = false;
         }
       })
+      if (bool = true) {
+        localStorage.setItem('filmChose', this.gameId);
+      }
       this.moviesChose = bool;
     });
   }
 
-  openDialog3(): void {
+  checkFilmChose() {
+    let monObjet = localStorage.getItem('filmChose');
+    if (monObjet == this.gameId) {
+      this.moviesChose = true;
+    }
+  }
+
+  openDialog3(joueurChoix: PlayerM): void {
     const dialogRef = this.dialog3.open(ChoixOscarsComponent, {
       width: '300px',
       data: {
-        _id: this.gameId
+        data: {
+          name: joueurChoix.name,
+          category: joueurChoix.category,
+          gameId: this.gameId
+        }
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      
+      let bool: boolean = true;
+      this.joueurs.forEach(function (joueur) {
+        if (joueur.aVote != true) {
+          bool = false;
+        }
+      })
+      this.votesOscar = bool;
     });
   }
 }
