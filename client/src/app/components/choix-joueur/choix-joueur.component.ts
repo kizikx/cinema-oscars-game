@@ -47,6 +47,7 @@ export class ChoixJoueurComponent implements OnInit {
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
+    this.data.category.sent = true;
     this.openSnackBar(this.filmLibreAjout.title+" et "+this.filmCategorie.title,"Choix des films");
   }
 
