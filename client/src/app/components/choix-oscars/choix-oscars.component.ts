@@ -9,6 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GameM } from '../../shared/models/game-m';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
+import { PlayerM } from '../../shared/models/player-m';
 
 @Component({
   selector: 'app-choix-oscars',
@@ -37,11 +38,11 @@ export class ChoixOscarsComponent implements OnInit {
     private readonly oscarServ : OscarService,
     private readonly cdRef: ChangeDetectorRef,
     private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: GameM
+    @Inject(MAT_DIALOG_DATA) public data: PlayerM
   ) { }
 
   ngOnInit(): void {
-    this.gameId = this.data._id
+    this.gameId = this.data.gameId;
     this.loadOscar();
     this.loadMovie();
   }
@@ -60,6 +61,7 @@ export class ChoixOscarsComponent implements OnInit {
     this.oscars.forEach(oscar => {
       this.oscarServ.addOscarVote(oscar);
     });
+    this.data.setVote();
   }
 
   public updateOscarTitle(title: string){
