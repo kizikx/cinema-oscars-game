@@ -9,7 +9,7 @@
   <app-movie (movieOutput)="getFilmChoixLibre($event)" [categorieLibre]=true></app-movie>
 </div>
 
-<div mat-dialog-actions>
+<div class="flex flex-between">
   <button mat-flat-button color="primary" (click)="onNoClick()">Annuler</button>
   <button mat-flat-button color="primary" cdkFocusInitial (click)="addMovie()">Ok</button>
 </div>

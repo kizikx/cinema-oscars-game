@@ -2,3 +2,34 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.flex {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-pack: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .flex-center {
+    justify-content: center;
+  }
+  
+  .flex-between {
+    justify-content: space-between;
+  }
+  
+  .flex-end {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-pack: center;
+    flex-wrap: wrap;
+  }
+  
+  .flex-evenly {
+    flex-direction: row;
+    justify-content: space-around;
+    justify-content: space-evenly;
+  }

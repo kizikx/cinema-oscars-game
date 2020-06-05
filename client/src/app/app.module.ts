@@ -17,6 +17,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
 import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
 import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
 import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
@@ -59,7 +60,8 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule
   ],
   entryComponents: [
     AjoutGameComponent

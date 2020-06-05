@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MovieService } from 'src/app/services/movie.service';
 import { OscarService } from 'src/app/services/oscar.service';
 import { Subscription } from 'rxjs';
@@ -26,6 +27,7 @@ export class ChoixOscarsComponent implements OnInit {
   });
 
   constructor(
+    public dialogRef: MatDialogRef<ChoixOscarsComponent>,
     private readonly movieServ : MovieService,
     private readonly oscarServ : OscarService,
     private readonly cdRef : ChangeDetectorRef
@@ -80,5 +82,9 @@ export class ChoixOscarsComponent implements OnInit {
     if(this.oscars.find(x=>x.name === oscarName).vote.length > this.oscarsOriginal.find(x=>x.name === oscarName).vote.length){
       this.oscars.find(x=>x.name === oscarName).vote.pop();
     }
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
