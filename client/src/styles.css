@@ -10,6 +10,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     -ms-flex-pack: center;
     align-items: center;
     flex-wrap: wrap;
+    padding: 2% 0%;
   }
   
   .flex-center {
