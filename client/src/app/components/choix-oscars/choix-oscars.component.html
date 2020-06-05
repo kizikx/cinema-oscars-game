@@ -22,11 +22,11 @@
         <mat-label>Acteur</mat-label>
         <mat-select formControlName="actor">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let movie of movieTab" (selectionChange)="updateOscarActor($event.value)">{{movie.actors}}</mat-option>
+            <mat-option *ngFor="let actor of actorsTab" (selectionChange)="updateOscarActor($event.value)">{{actor.name}}</mat-option>
         </mat-select>
     </mat-form-field>
-    
-    <div class="flex flex-center">
+
+    <div class="flex flex-between">
         <button mat-flat-button color="primary" (click)="onNoClick()">Annuler</button>
         <button mat-flat-button color="primary" (onclick)="updateOscars()">Valider</button>
     </div>

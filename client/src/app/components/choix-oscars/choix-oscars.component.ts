@@ -8,6 +8,7 @@ import { OscarM } from 'src/app/shared/models/oscar-m';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GameM } from '../../shared/models/game-m';
+import { ActeurM } from 'src/app/shared/models/acteur-m';
 
 @Component({
   selector: 'app-choix-oscars',
@@ -18,9 +19,10 @@ export class ChoixOscarsComponent implements OnInit {
 
   private getMovieSubscription : Subscription;
   private getOscarSubscription : Subscription;
-  public movieTab : MovieM[];
-  private oscars : OscarM[];
-  private oscarsOriginal: OscarM[];
+  public movieTab : MovieM[] = [];
+  public actorsTab : ActeurM[] = [];
+  private oscars : OscarM[] = [];
+  private oscarsOriginal: OscarM[] = [];
   public gameId: string;
 
   public ajoutOscarForm = new FormGroup({
@@ -80,6 +82,13 @@ export class ChoixOscarsComponent implements OnInit {
     .getMovie()
     .subscribe(data => {
       this.movieTab = data;
+    //  let toto: ActeurM[];
+      data.forEach(function(item){
+      //  toto.push(item.actors);
+        console.log(item);
+        this.actorsTab.push(item.actors);
+      });
+    //  this.actorsTab = toto;
       this.cdRef.markForCheck();
     })
   }
