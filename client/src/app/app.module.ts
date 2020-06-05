@@ -11,7 +11,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChoixJoueurComponent } from './components/choix-joueur/choix-joueur.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ListeGamesComponent } from './components/liste-games/liste-games.component';
 import { AjoutGameComponent } from './components/ajout-game/ajout-game.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +18,6 @@ import { MatInputModule } from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { PageJeuComponent } from './components/page-jeu/page-jeu.component';
-import { ListeJoueursComponent } from './components/liste-joueurs/liste-joueurs.component';
 import { AjoutJoueurComponent } from './components/ajout-joueur/ajout-joueur.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -37,10 +35,8 @@ import { MatRadioModule } from '@angular/material/radio';
     AccueilComponent,
     VoteComponent,
     ChoixJoueurComponent,
-    ListeGamesComponent,
     AjoutGameComponent,
     PageJeuComponent,
-    ListeJoueursComponent,
     AjoutJoueurComponent,
     ChoixOscarsComponent,
     ResultatComponent,
