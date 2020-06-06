@@ -139,7 +139,6 @@ export class PageJeuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.loadJoueurs();
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
         if (joueur.category.sent != true) {
@@ -150,6 +149,7 @@ export class PageJeuComponent implements OnInit {
         localStorage.setItem('filmChose', this.gameId);
       }
       this.moviesChose = bool;
+      this.loadJoueurs();
     });
   }
 
