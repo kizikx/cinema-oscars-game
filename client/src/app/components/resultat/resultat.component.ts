@@ -1,10 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { OscarService } from 'src/app/services/oscar.service';
-import { PlayerService } from 'src/app/services/player.service';
 import { OscarM } from '../../shared/models/oscar-m';
-import { VoteM } from '../../shared/models/vote-m';
-import { PlayerM } from '../../shared/models/player-m';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -24,6 +20,7 @@ export class ResultatComponent implements OnInit {
   dataOscar: OscarM[] = [];
   winnerOscar: string[] = [];
   displayedColumns: string[] = ['name', 'winner'];
+  @Input() gameId : string;
 
   constructor( private _oscarservice: OscarService) { }
 
@@ -33,6 +30,7 @@ export class ResultatComponent implements OnInit {
   }
 
   getOscar() {
+    this._oscarservice.setGameId(this.gameId);
     this._oscarservice!.getOscar()
       .pipe(
         map(data => {
