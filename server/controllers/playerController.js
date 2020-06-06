@@ -58,12 +58,12 @@ module.exports.updatePlayer = (req, res) => {
         })
     }
   
-    Player.findOne({_id: req.params.playerId}, (err, foundObject) => {
-      if (req.body.catagories !== undefined) {
-        foundObject.catagories.push(req.body.catagories);
+    Player.findOne({_id: req.params.id}, (err, foundObject) => {
+      if (req.body.categories !== undefined) {
+        foundObject.cateories.push(req.body.categories);
       }
       if (req.body.aVote !== undefined) {
-        foundObject.aVote.push(req.body.aVote);
+        foundObject.aVote = req.body.aVote;
       }
       foundObject.save((err, updatedObject) => {
           if (err) {
