@@ -1,8 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
-import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({

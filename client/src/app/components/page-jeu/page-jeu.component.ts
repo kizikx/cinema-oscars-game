@@ -104,23 +104,24 @@ export class PageJeuComponent implements OnInit {
       .getPlayer()
       .subscribe(data => {
         this.joueurs = data;
+        console.log(this.joueurs);
         this.cdRef2.markForCheck();
       })
   }
 
-  public verifChoix() : boolean{
-    if(this.joueurs){
-      for(let joueur of this.joueurs){
-        console.log(joueur);
-        if(joueur.aVote == false){
-          return false;
-        }
-      }
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // public verifChoix() : boolean{
+  //   if(this.joueurs){
+  //     for(let joueur of this.joueurs){
+  //       console.log(joueur);
+  //       if(joueur.aVote == false){
+  //         return false;
+  //       }
+  //     }
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   openDialog2(joueurChoix: PlayerM): void {
     let validate: boolean = false;

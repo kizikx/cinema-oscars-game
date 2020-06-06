@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject, ChangeDetectorRef, Input } from '@angular/core';
-import { CategorieM } from 'src/app/shared/models/categorie-m';
 import { PlayerM } from 'src/app/shared/models/player-m';
 import { MatDialogRef } from '@angular/material/dialog';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { MovieService } from 'src/app/services/movie.service';
 import { Subscription } from 'rxjs';

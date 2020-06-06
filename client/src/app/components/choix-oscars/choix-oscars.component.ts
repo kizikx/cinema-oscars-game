@@ -7,7 +7,6 @@ import { MovieM } from 'src/app/shared/models/movie-m';
 import { OscarM } from 'src/app/shared/models/oscar-m';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { GameM } from '../../shared/models/game-m';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
 import { PlayerM } from '../../shared/models/player-m';
 
@@ -84,13 +83,12 @@ export class ChoixOscarsComponent implements OnInit {
     .getMovieByGameId()
     .subscribe(data => {
       this.movieTab = data;
-    //  let toto: ActeurM[];
       data.forEach(function(item){
-      //  toto.push(item.actors);
-        console.log(item);
-        this.actorsTab.push(item.actors);
+        if(item.actors){
+          this.actorsTab.push(item.actors);
+          console.log(this.actorsTab);
+        }
       });
-    //  this.actorsTab = toto;
       this.cdRef.markForCheck();
     })
   }

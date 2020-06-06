@@ -2,9 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GameM } from 'src/app/shared/models/game-m';
 import { GameService } from 'src/app/services/game.service';
-import { CategorieM } from 'src/app/shared/models/categorie-m';
-import { MovieService } from 'src/app/services/movie.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { AjoutGameComponent } from '../ajout-game/ajout-game.component';
 import { Router } from '@angular/router';
 
