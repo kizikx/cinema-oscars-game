@@ -20,25 +20,8 @@ export class PageJeuComponent implements OnInit {
 
   moviesChose: boolean = false;
   votesOscar: boolean = false;
-  public gameId : any;
+  public gameId : string;
   private addOscarSubscription: Subscription;
-  public OscarFilm = new OscarM ({
-    gameId : this.gameId,
-    name : "Meilleur film",
-    description : "Oscar récompensant le meilleur film",
-    vote: []});
-  public OscarActeur = new OscarM ({
-    gameId : this.gameId,
-    name : "Meilleur acteur",
-    description : "Oscar récompensant le meilleur acteur",
-    vote: []});
-  public OscarRealisateur = new OscarM ({
-    gameId : this.gameId,
-    name : "Meilleur réalisateur",
-    description : "Oscar récompensant le meilleur réalisateur",
-    vote: []
-  });
-
   private getJoueurSubscription: Subscription;
   public joueurs: PlayerM[];
 
@@ -61,21 +44,39 @@ export class PageJeuComponent implements OnInit {
     })
     this.loadJoueurs();
     this.checkFilmChose();
+    this.ajoutOscars;
   }
 
   public ajoutOscars(){
+    const oscarFilm = new OscarM ({
+      gameId : this.gameId,
+      name : "Meilleur film",
+      description : "Oscar récompensant le meilleur film",
+      vote: []});
+    const oscarActeur = new OscarM ({
+      gameId : this.gameId,
+      name : "Meilleur acteur",
+      description : "Oscar récompensant le meilleur acteur",
+      vote: []});
+    const oscarRealisateur = new OscarM ({
+      gameId : this.gameId,
+      name : "Meilleur réalisateur",
+      description : "Oscar récompensant le meilleur réalisateur",
+      vote: []
+    });
+    this.oscarServ.setGameId(this.gameId);
     this.addOscarSubscription = this.oscarServ
-      .createOscar(this.OscarFilm)
+      .createOscar(oscarFilm)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
     this.addOscarSubscription = this.oscarServ
-      .createOscar(this.OscarActeur)
+      .createOscar(oscarActeur)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
     this.addOscarSubscription = this.oscarServ
-      .createOscar(this.OscarRealisateur)
+      .createOscar(oscarRealisateur)
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
