@@ -109,9 +109,8 @@ export class PageJeuComponent implements OnInit {
   }
 
   public verifChoix() : boolean{
-    if(this.joueurs){
+    if(this.joueurs.length > 0){
       for(let joueur of this.joueurs){
-        console.log(joueur);
         if(joueur.aVote == false){
           return false;
         }

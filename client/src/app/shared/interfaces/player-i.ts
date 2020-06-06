@@ -6,5 +6,5 @@ export interface PlayerI {
   gameId : string,
   category : CategorieI,
   aVote : boolean,
-  _id : string;
+  _id : string
 }
