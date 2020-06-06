@@ -22,7 +22,7 @@ export class PageJeuComponent implements OnInit {
   public gameId : string;
   private addOscarSubscription: Subscription;
   private getJoueurSubscription: Subscription;
-  public joueurs: PlayerM[];
+  public joueurs: PlayerM[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -134,6 +134,7 @@ export class PageJeuComponent implements OnInit {
       width: '300px',
       data: {
         name: joueurChoix.name,
+        admin: joueurChoix.admin,
         category: joueurChoix.category,
         gameId: this.gameId,
         _id: joueurChoix._id
