@@ -39,12 +39,13 @@ export class OscarService {
    );
   }
 
-  public addOscarVote(oscar : OscarM): Observable<OscarM>{
-    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionOscar, oscar._id);
-    return this.http.post<OscarM>(this.route, oscar, this.httpOptions)
-   .pipe(
-     map(item => new OscarM(item))
-   );
+  public patchOscar(oscar : OscarM): Observable<OscarM>{
+    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionPlayer, this.oscarId);
+    console.log(this.route);
+    return this.http.patch<OscarM>(this.route, oscar, this.httpOptions)
+    .pipe(
+      map(item => new OscarM(item))
+    );
   }
 
   public setGameId(gameId : string){
