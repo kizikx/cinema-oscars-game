@@ -5,7 +5,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { MovieService } from 'src/app/services/movie.service';
 import { PlayerService } from 'src/app/services/player.service';
-import { Subscription } from 'rxjs';
+import { Subscription, of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -57,9 +57,10 @@ export class ChoixJoueurComponent implements OnInit {
   }
 
   updateVoteJoueur(){
-    this.playerServ.setPlayerId(this.joueurChoix._id)
+    this.playerServ.setPlayerId(this.joueurChoix._id);
     this.joueurChoix.aVote = true;
-    this.playerServ.patchPlayer(this.joueurChoix);
+    this.playerServ.patchPlayer(this.joueurChoix)
+      .pipe().toPromise();
   }
 
   onNoClick(): void {

@@ -60,7 +60,8 @@ export class ChoixOscarsComponent implements OnInit {
   public updateOscars(){
     this.oscars.forEach(oscar => {
       this.oscarServ.setOscarId(oscar._id);
-      this.oscarServ.patchOscar(oscar);
+      this.oscarServ.patchOscar(oscar)
+        .pipe().toPromise();
     });
     this.data.aVote = true;
     this.onNoClick();
