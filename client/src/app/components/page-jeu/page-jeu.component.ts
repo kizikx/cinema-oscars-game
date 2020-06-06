@@ -46,8 +46,10 @@ export class PageJeuComponent implements OnInit {
     if(this.ajout == false){
       this.ajoutOscars();
       this.ajout = true;
+      localStorage.setItem('ajout', 'true');
     }
     this.checkFilmChose();
+    this.checkAjout();
   }
 
   public ajoutOscars(){
@@ -85,10 +87,6 @@ export class PageJeuComponent implements OnInit {
       })
   }
 
-  public supprimerJoueur(){
-    //TODO Supprimer les categories ajoutees en cas
-  }
-
   openDialog(): void {
     const dialogRef = this.dialog.open(AjoutJoueurComponent, {
       width: '300px',
@@ -112,18 +110,12 @@ export class PageJeuComponent implements OnInit {
       })
   }
 
-  // public verifChoix() : boolean{
-  //   if(this.joueurs.length > 0){
-  //     for(let joueur of this.joueurs){
-  //       if(joueur.aVote == false){
-  //         return false;
-  //       }
-  //     }
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  checkAjout() {
+    let monObjet = localStorage.getItem('ajout');
+    if (monObjet == 'true') {
+      this.ajout = true;
+    }
+  }
 
   checkFilmChose() {
     let monObjet = localStorage.getItem('filmChose');
@@ -170,7 +162,6 @@ export class PageJeuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.verifChoix();
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
         if (joueur.aVote != true) {
