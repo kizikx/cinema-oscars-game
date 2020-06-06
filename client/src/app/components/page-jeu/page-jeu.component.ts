@@ -136,7 +136,8 @@ export class PageJeuComponent implements OnInit {
       data: {
         name: joueurChoix.name,
         category: joueurChoix.category,
-        gameId: this.gameId
+        gameId: this.gameId,
+        _id: joueurChoix._id
       }
     });
 

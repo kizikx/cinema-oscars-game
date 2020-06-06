@@ -57,8 +57,8 @@ export class ChoixJoueurComponent implements OnInit {
   }
 
   updateVoteJoueur(){
-   // this.joueurChoix.setVote();
-   this.playerServ.setPlayerId(this.joueurChoix._id)
+    console.log(this.joueurChoix._id);
+    this.playerServ.setPlayerId(this.joueurChoix._id);
     this.joueurChoix.aVote = true;
     this.playerServ.patchPlayer(this.joueurChoix);
   }
