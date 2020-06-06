@@ -23,6 +23,7 @@ export class PageJeuComponent implements OnInit {
   private addOscarSubscription: Subscription;
   private getJoueurSubscription: Subscription;
   public joueurs: PlayerM[] = [];
+  public ajout: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -42,7 +43,9 @@ export class PageJeuComponent implements OnInit {
       this.gameId = params.gameId;
     })
     this.loadJoueurs();
-    // this.ajoutOscars();
+    if(this.ajout == false){
+      this.ajoutOscars();
+    }
     this.checkFilmChose();
   }
 

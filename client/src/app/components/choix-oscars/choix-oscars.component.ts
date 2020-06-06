@@ -62,7 +62,8 @@ export class ChoixOscarsComponent implements OnInit {
     this.oscars.forEach(oscar => {
       this.oscarServ.patchOscar(oscar);
     });
-    this.data.setVote();
+    this.data.aVote = true;
+    this.onNoClick();
   }
 
   public updateOscarTitle(title: string){

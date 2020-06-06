@@ -28,6 +28,6 @@
 
     <div class="flex flex-between">
         <button mat-flat-button color="primary" (click)="onNoClick()">Annuler</button>
-        <button mat-flat-button color="primary" (onclick)="updateOscars()">Valider</button>
+        <button mat-flat-button color="primary" [mat-dialog-close]="data" cdkFocusInitial (click)="updateOscars()">Valider</button>
     </div>
 </form>
