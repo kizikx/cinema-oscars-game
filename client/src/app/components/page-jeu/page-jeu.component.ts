@@ -156,9 +156,11 @@ export class PageJeuComponent implements OnInit {
     const dialogRef = this.dialog3.open(ChoixOscarsComponent, {
       width: '300px',
       data: {
-          name: joueurChoix.name,
-          category: joueurChoix.category,
-          gameId: this.gameId
+        name: joueurChoix.name,
+        admin: joueurChoix.admin,
+        category: joueurChoix.category,
+        gameId: this.gameId,
+        _id: joueurChoix._id
       }
     });
 
