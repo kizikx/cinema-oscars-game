@@ -104,7 +104,6 @@ export class PageJeuComponent implements OnInit {
       .getPlayer()
       .subscribe(data => {
         this.joueurs = data;
-        console.log(this.joueurs);
         this.cdRef2.markForCheck();
       })
   }
@@ -159,11 +158,9 @@ export class PageJeuComponent implements OnInit {
     const dialogRef = this.dialog3.open(ChoixOscarsComponent, {
       width: '300px',
       data: {
-        data: {
           name: joueurChoix.name,
           category: joueurChoix.category,
           gameId: this.gameId
-        }
       }
     });
 

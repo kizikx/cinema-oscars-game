@@ -22,7 +22,7 @@ export class MovieService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getMovie(): Observable<MovieM[]>{
+  public getAllMovie(): Observable<MovieM[]>{
     this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovie);
     return this.http.get<MovieM[]>(this.route)
     .pipe(
@@ -30,9 +30,8 @@ export class MovieService {
     );
   }
 
-  public getMovieByGameId(): Observable<MovieM[]>{//game/:gameId/moviegame Routes.extensionMovieGame
-    this.route = Routes.getApiRoute(Routes.game, "/5edab802ab1096b95aff71a7", Routes.extensionMovieGame);
-    console.log(this.route);
+  public getMovieByGameId(): Observable<MovieM[]>{
+    this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionMovieGame);
     return this.http.get<MovieM[]>(this.route)
     .pipe(
       map(data => data.map(item => new MovieM(item)))

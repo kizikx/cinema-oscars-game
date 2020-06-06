@@ -19,10 +19,10 @@ export class ChoixOscarsComponent implements OnInit {
 
   private getMovieSubscription : Subscription;
   private getOscarSubscription : Subscription;
-  public movieTab : MovieM[];
-  public actorsTab : ActeurM[];
-  private oscars : OscarM[];
-  private oscarsOriginal: OscarM[];
+  public movieTab : MovieM[] = [];
+  public actorsTab : ActeurM[] = [];
+  private oscars : OscarM[] = [];
+  private oscarsOriginal: OscarM[] = [];
   public gameId: string;
 
   public ajoutOscarForm = new FormGroup({
@@ -79,6 +79,7 @@ export class ChoixOscarsComponent implements OnInit {
   }
 
   public loadMovie(){
+    this.movieServ.setGameId(this.gameId);
     this.getMovieSubscription = this.movieServ
     .getMovieByGameId()
     .subscribe(data => {
