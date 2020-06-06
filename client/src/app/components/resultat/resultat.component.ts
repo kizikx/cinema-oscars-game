@@ -26,15 +26,15 @@ export class ResultatComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOscar();
-    this.countvote();
   }
 
   getOscar() {
     this._oscarservice.setGameId(this.gameId);
-    this._oscarservice!.getOscar()
+    this._oscarservice.getOscar()
       .pipe(
         map(data => {
           this.dataOscar = data;
+          this.countvote();
         }),
         catchError((err) => {
           return of([]);
@@ -44,6 +44,7 @@ export class ResultatComponent implements OnInit {
   countvote() {
     let votepersonne: VotePersonne[] = [];
     this.dataOscar.forEach(function (oscar) {
+      console.log("oscar" + oscar)
       oscar.votes.forEach(function (label) {
         if (votepersonne.length > 0) {
           let bool: boolean = false;
