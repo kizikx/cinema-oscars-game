@@ -23,9 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChoixOscarsComponent } from './components/choix-oscars/choix-oscars.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ResultatComponent } from './components/resultat/resultat.component';
-import { ClassementComponent } from './components/classement/classement.component';
 import { MatTableModule } from '@angular/material/table';
-import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -37,8 +35,7 @@ import { MatRadioModule } from '@angular/material/radio';
     PageJeuComponent,
     AjoutJoueurComponent,
     ChoixOscarsComponent,
-    ResultatComponent,
-    ClassementComponent
+    ResultatComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,7 @@ export class PageJeuComponent implements OnInit {
 
   moviesChose: boolean = false;
   votesOscar: boolean = false;
+  afficheResultat: boolean = false;
   public gameId : string;
   private addOscarSubscription: Subscription;
   private getJoueurSubscription: Subscription;
@@ -170,5 +171,9 @@ export class PageJeuComponent implements OnInit {
       })
       this.votesOscar = bool;
     });
+  }
+
+  afficherResultat() {
+    this.afficheResultat = true;
   }
 }

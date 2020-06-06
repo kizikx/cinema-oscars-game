@@ -22,7 +22,7 @@
 </mat-grid-list>
 <ng-container *ngIf="votesOscar == true">
   <div class="flex flex-center">
-    <button mat-flat-button color="primary">Classement</button>
+    <button mat-flat-button color="primary" (click)="afficherResultat()">Afficher les resultats</button>
   </div>
 </ng-container>
-
+<app-resultat *ngIf="afficheResultat == true"></app-resultat>
