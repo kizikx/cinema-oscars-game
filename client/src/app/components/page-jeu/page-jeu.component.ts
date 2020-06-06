@@ -48,7 +48,7 @@ export class PageJeuComponent implements OnInit {
     if(this.ajout == false){
       this.ajoutOscars();
       this.ajout = true;
-      localStorage.setItem('ajout', 'true');
+      localStorage.setItem('ajout', this.gameId);
     }
     this.checkFilmChose();
   }
@@ -113,7 +113,7 @@ export class PageJeuComponent implements OnInit {
 
   checkAjout() {
     let monObjet = localStorage.getItem('ajout');
-    if (monObjet == 'true') {
+    if (monObjet == this.gameId) {
       this.ajout = true;
     }
   }
