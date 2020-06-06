@@ -72,7 +72,8 @@ module.exports.addVote = (req, res) => {
   
     Oscar.findOne({_id: req.params.oscarId}, (err, foundObject) => {
       if (req.body.votes !== undefined) {
-        foundObject.votes.push(req.body.votes);
+        //foundObject.votes.push(req.body.votes);
+        foundObject.votes.concat(req.body.votes)
       }
       foundObject.save((err, updatedObject) => {
           if (err) {
