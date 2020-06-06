@@ -86,7 +86,6 @@ export class ChoixOscarsComponent implements OnInit {
       data.forEach(function(item){
         if(item.actors){
           this.actorsTab.push(item.actors);
-          console.log(this.actorsTab);
         }
       });
       this.cdRef.markForCheck();

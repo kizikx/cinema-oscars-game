@@ -30,7 +30,7 @@ export class MovieService {
     );
   }
 
-  public getMovieByGameId(): Observable<MovieM[]>{//game/:gameId/moviegame Routes.extensionMovieGame
+  public getMovieByGameId(): Observable<MovieM[]>{
     this.route = Routes.getApiRoute(Routes.game, "/5edab802ab1096b95aff71a7", Routes.extensionMovieGame);
     console.log(this.route);
     return this.http.get<MovieM[]>(this.route)
