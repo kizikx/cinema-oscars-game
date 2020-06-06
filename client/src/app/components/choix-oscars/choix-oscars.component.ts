@@ -80,15 +80,17 @@ export class ChoixOscarsComponent implements OnInit {
 
   public loadMovie(){
     this.movieServ.setGameId(this.gameId);
+    let getActeurs : ActeurM[] = this.actorsTab;
     this.getMovieSubscription = this.movieServ
     .getMovieByGameId()
     .subscribe(data => {
       this.movieTab = data;
       data.forEach(function(item){
-        if(item.actors){
-          this.actorsTab.push(item.actors);
+        for(let actor of item.actors){
+          getActeurs.push(actor);
         }
       });
+      this.actorsTab = getActeurs;
       this.cdRef.markForCheck();
     })
   }
