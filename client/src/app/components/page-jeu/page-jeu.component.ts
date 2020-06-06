@@ -17,9 +17,9 @@ import { ChoixOscarsComponent } from '../choix-oscars/choix-oscars.component';
 })
 export class PageJeuComponent implements OnInit {
 
-  moviesChose: boolean = false;
-  votesOscar: boolean = false;
-  afficheResultat: boolean = false;
+  // public moviesChose: boolean = false;
+  public votesOscar: boolean = false;
+  public afficheResultat: boolean = false;
   public gameId : string;
   private addOscarSubscription: Subscription;
   private getJoueurSubscription: Subscription;
@@ -50,7 +50,7 @@ export class PageJeuComponent implements OnInit {
       this.ajout = true;
       localStorage.setItem('ajout', this.gameId);
     }
-    this.checkFilmChose();
+    // this.checkFilmChose();
   }
 
   public ajoutOscars(){
@@ -118,12 +118,12 @@ export class PageJeuComponent implements OnInit {
     }
   }
 
-  checkFilmChose() {
-    let monObjet = localStorage.getItem('filmChose');
-    if (monObjet == this.gameId) {
-      this.moviesChose = true;
-    }
-  }
+  // checkFilmChose() {
+  //   let monObjet = localStorage.getItem('filmChose');
+  //   if (monObjet == this.gameId) {
+  //     this.moviesChose = true;
+  //   }
+  // }
 
   openDialog2(joueurChoix: PlayerM): void {
     let validate: boolean = false;
@@ -139,16 +139,17 @@ export class PageJeuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      let bool: boolean = true;
-      this.joueurs.forEach(function (joueur) {
-        if (joueur.category.sent != true) {
-          bool = false;
-        }
-      })
-      if (bool == true) {
-        localStorage.setItem('filmChose', this.gameId);
-      }
-      this.moviesChose = bool;
+      this.loadJoueurs();
+      // let bool: boolean = true;
+      // this.joueurs.forEach(function (joueur) {
+      //   if (joueur.category.sent != true) {
+      //     bool = false;
+      //   }
+      // })
+      // if (bool == true) {
+      //   localStorage.setItem('filmChose', this.gameId);
+      // }
+      // this.moviesChose = bool;
     });
   }
 
