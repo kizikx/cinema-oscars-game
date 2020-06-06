@@ -108,6 +108,13 @@ export class PageJeuComponent implements OnInit {
       .subscribe(data => {
         this.joueurs = data;
         this.cdRef2.markForCheck();
+        let bool: boolean = true;
+        this.joueurs.forEach(function (joueur) {
+        if (joueur.aVote != true) {
+          bool = false;
+        }
+      })
+      this.votesOscar = bool;
       })
   }
 
@@ -167,13 +174,6 @@ export class PageJeuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.loadJoueurs();
-      let bool: boolean = true;
-      this.joueurs.forEach(function (joueur) {
-        if (joueur.aVote != true) {
-          bool = false;
-        }
-      })
-      this.votesOscar = bool;
     });
   }
 
