@@ -44,13 +44,13 @@ export class PageJeuComponent implements OnInit {
       this.gameId = params.gameId;
     })
     this.loadJoueurs();
+    this.checkAjout();
     if(this.ajout == false){
       this.ajoutOscars();
       this.ajout = true;
       localStorage.setItem('ajout', 'true');
     }
     this.checkFilmChose();
-    this.checkAjout();
   }
 
   public ajoutOscars(){
