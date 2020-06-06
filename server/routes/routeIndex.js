@@ -20,6 +20,8 @@ module.exports = (app) => {
 
     app.patch('/game/:gameId/player/:id', playerController.updatePlayer);
 
+    app.patch('/game/:gameId/player2/:id', playerController.updatePlayer2);
+
     app.delete('/game/:gameId/player/:id', playerController.deletePlayer);
 
     app.post('/game/:gameId/movie', movieController.createMovie);

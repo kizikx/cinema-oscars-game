@@ -34,12 +34,12 @@ export class ChoixJoueurComponent implements OnInit {
   }
 
   public addMovie() {
-    this.data.category.sent = true;
+    this.data.categories.sent = true;
     this.movieServ.setGameId(this.data.gameId);
     this.playerServ.setGameId(this.data.gameId);
     this.filmLibreAjout.gameId = this.data.gameId;
     this.filmCategorie.gameId = this.data.gameId;
-    this.filmCategorie.category = this.data.category.name;
+    this.filmCategorie.category = this.data.categories.name;
     this.addMovieSubscription = this.movieServ
       .addMovie(this.filmLibreAjout)
       .subscribe(data => {
@@ -51,12 +51,13 @@ export class ChoixJoueurComponent implements OnInit {
       .subscribe(data => {
         this.cdRef.markForCheck();
       })
-    this.data.category.sent = true;
+    this.data.categories.sent = true;
     this.updateChoixJoueur();
     this.openSnackBar(this.filmLibreAjout.title+" et "+this.filmCategorie.title,"Choix des films");
   }
 
   updateChoixJoueur(){
+    console.log(this.joueurChoix);
     this.playerServ.setPlayerId(this.joueurChoix._id);
     this.playerServ.patchPlayer(this.joueurChoix)
       .pipe().toPromise();

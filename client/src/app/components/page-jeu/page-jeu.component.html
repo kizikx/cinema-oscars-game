@@ -15,9 +15,10 @@
 </mat-toolbar>
 <mat-grid-list cols="2" rowHeight="2:1">
   <ng-container *ngFor="let joueur of joueurs">
-    <mat-grid-tile *ngIf="joueur.aVote == false" (click)="openDialog2(joueur)">Joueur : {{joueur.name}} (Choisir les films)</mat-grid-tile>
-    <mat-grid-tile *ngIf="joueur.aVote == true && moviesChose == false">Joueur : {{joueur.name}} (a fait son choix)</mat-grid-tile>
-    <mat-grid-tile *ngIf="moviesChose == true" (click)="openDialog3(joueur)">{{joueur.name}} (Voter pour les oscars)</mat-grid-tile>
+    <mat-grid-tile *ngIf="joueur.categories.sent == false" (click)="openDialog2(joueur)">Joueur : {{joueur.name}} (Choisir les films)</mat-grid-tile>
+    <mat-grid-tile *ngIf="joueur.categories.sent == true && moviesChose == false">Joueur : {{joueur.name}} (a fait son choix)</mat-grid-tile>
+    <mat-grid-tile *ngIf="moviesChose == true && votesOscar == false" (click)="openDialog3(joueur)">Joueur : {{joueur.name}} (Voter pour les oscars)</mat-grid-tile>
+    <mat-grid-tile *ngIf="votesOscar == true">Joueur : {{joueur.name}} (a fait son vote)</mat-grid-tile>
   </ng-container>
 </mat-grid-list>
 <ng-container *ngIf="votesOscar == true">

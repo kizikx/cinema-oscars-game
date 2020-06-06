@@ -43,6 +43,7 @@ export class AjoutJoueurComponent implements OnInit {
 
   public ajoutJoueur(){
     const categorieAjout = this.attribuerCategorie(this.categories);
+    categorieAjout.sent = false;
 
     let adminChoix : boolean;
     if(this.ajoutJoueurForm.get('isAdministrateur').value == null){
@@ -53,7 +54,7 @@ export class AjoutJoueurComponent implements OnInit {
 
     this.joueurAjout = new PlayerM({
       name : this.ajoutJoueurForm.get('nomJoueur').value,
-      category : categorieAjout,
+      categories : categorieAjout,
       admin : adminChoix,
       gameId : this.gameId,
       aVote : false

@@ -5,7 +5,7 @@ export class PlayerM implements PlayerI{
   name : string;
   admin : boolean;
   gameId : string;
-  category : CategorieM;
+  categories : CategorieM;
   aVote : boolean;
   _id : string;
 

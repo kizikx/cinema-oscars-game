@@ -69,26 +69,7 @@ module.exports.addVote = (req, res) => {
             message: "Oscar content can not be empty"
         })
     }
-    /*
-    Oscar.findOne({_id: req.params.oscarId}, (err, foundObject) => {
-      if (req.body.votes !== undefined) {
-          console.log(req.body.votes);
-        foundObject.votes.push(req.body.votes);
-        //foundObject.votes.concat(req.body.votes)
-      }
-      console.log("--");
-      console.log(foundObject);
-      console.log("--");
-      foundObject.save((err, updatedObject) => {
-          if (err) {
-              res.status(400).send({
-                  erreur: err.message
-              })
-          } else {
-              res.status(200).send(updatedObject);
-          }
-      })
-    })*/
+    
     Oscar.updateOne(
         {_id: req.params.oscarId},
         { $addToSet: { votes: req.body.votes } },

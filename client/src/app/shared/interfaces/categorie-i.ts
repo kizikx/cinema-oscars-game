@@ -1,4 +1,5 @@
 export interface CategorieI {
   name : string,
-  description : string
+  description : string,
+  sent : boolean
 }

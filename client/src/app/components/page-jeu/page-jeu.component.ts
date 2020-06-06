@@ -132,7 +132,7 @@ export class PageJeuComponent implements OnInit {
       data: {
         name: joueurChoix.name,
         admin: joueurChoix.admin,
-        category: joueurChoix.category,
+        categories: joueurChoix.categories,
         gameId: this.gameId,
         _id: joueurChoix._id
       }
@@ -142,7 +142,7 @@ export class PageJeuComponent implements OnInit {
       this.loadJoueurs();
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
-        if (joueur.category.sent != true) {
+        if (joueur.categories.sent != true) {
           bool = false;
         }
       })
@@ -159,13 +159,14 @@ export class PageJeuComponent implements OnInit {
       data: {
         name: joueurChoix.name,
         admin: joueurChoix.admin,
-        category: joueurChoix.category,
+        categories: joueurChoix.categories,
         gameId: this.gameId,
         _id: joueurChoix._id
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.loadJoueurs();
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
         if (joueur.aVote != true) {
