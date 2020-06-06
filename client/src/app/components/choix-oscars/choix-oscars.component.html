@@ -22,7 +22,7 @@
         <mat-label>Acteur</mat-label>
         <mat-select formControlName="actor">
             <mat-option>None</mat-option>
-            <mat-option *ngFor="let actor of actorsTab" (selectionChange)="updateOscarActor($event.value)">{{actor.name}}</mat-option>
+            <mat-option *ngFor="let actor of actorsTab" [value]="actor.name" (selectionChange)="updateOscarActor($event.value)">{{actor.name}}</mat-option>
         </mat-select>
     </mat-form-field>
 
