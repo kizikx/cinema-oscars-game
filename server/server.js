@@ -9,7 +9,6 @@ require('./models/gameModel');
 require('./models/movieModel');
 require('./models/oscarModel');
 require('./models/playerModel');
-require('./models/voteModel');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
