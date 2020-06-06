@@ -25,4 +25,12 @@
     <button mat-flat-button color="primary" (click)="afficherResultat()">Afficher les resultats</button>
   </div>
 </ng-container>
-<app-resultat *ngIf="afficheResultat == true"></app-resultat>
+
+<ng-container *ngIf="afficheResultat == true">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Classement</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <app-resultat></app-resultat>
+</ng-container>
