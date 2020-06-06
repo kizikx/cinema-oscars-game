@@ -58,17 +58,17 @@ export class PageJeuComponent implements OnInit {
       gameId : this.gameId,
       name : "Meilleur film",
       description : "Oscar récompensant le meilleur film",
-      vote: []});
+      votes: []});
     const oscarActeur = new OscarM ({
       gameId : this.gameId,
       name : "Meilleur acteur",
       description : "Oscar récompensant le meilleur acteur",
-      vote: []});
+      votes: []});
     const oscarRealisateur = new OscarM ({
       gameId : this.gameId,
       name : "Meilleur réalisateur",
       description : "Oscar récompensant le meilleur réalisateur",
-      vote: []
+      votes: []
     });
     this.oscarServ.setGameId(this.gameId);
     this.addOscarSubscription = this.oscarServ

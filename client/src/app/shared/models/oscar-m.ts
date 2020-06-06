@@ -5,7 +5,7 @@ export class OscarM implements OscarI{
   gameId : string;
   name : string;
   description : string;
-  vote: string[];
+  votes: string[];
 
   constructor(fields?: Partial<OscarM>){
     if (fields) {

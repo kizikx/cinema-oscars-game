@@ -46,7 +46,7 @@ export class ResultatComponent implements OnInit {
   countvote() {
     let votepersonne: VotePersonne[] = [];
     this.dataOscar.forEach(function (oscar) {
-      oscar.vote.forEach(function (label) {
+      oscar.votes.forEach(function (label) {
         if (votepersonne.length > 0) {
           let bool: boolean = false;
           let i = 0;
