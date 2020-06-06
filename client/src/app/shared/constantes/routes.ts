@@ -4,7 +4,7 @@ export  class Routes {
   static readonly game: string = '/game';
 
   static readonly extensionMovie = '/movie';
-  static readonly extensionMovieGame = '/movieGame';
+  static readonly extensionMovieGame = '/moviegame';
   static readonly extensionPlayer = '/player';
   static readonly extensionVote = '/vote';
   static readonly extensionOscar = '/oscar';

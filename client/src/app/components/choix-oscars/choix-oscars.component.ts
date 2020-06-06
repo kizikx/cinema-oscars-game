@@ -20,10 +20,10 @@ export class ChoixOscarsComponent implements OnInit {
 
   private getMovieSubscription : Subscription;
   private getOscarSubscription : Subscription;
-  public movieTab : MovieM[] = [];
-  public actorsTab : ActeurM[] = [];
-  private oscars : OscarM[] = [];
-  private oscarsOriginal: OscarM[] = [];
+  public movieTab : MovieM[];
+  public actorsTab : ActeurM[];
+  private oscars : OscarM[];
+  private oscarsOriginal: OscarM[];
   public gameId: string;
 
   public ajoutOscarForm = new FormGroup({
@@ -38,11 +38,14 @@ export class ChoixOscarsComponent implements OnInit {
     private readonly oscarServ : OscarService,
     private readonly cdRef: ChangeDetectorRef,
     private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: PlayerM
+    @Inject(MAT_DIALOG_DATA) public data: /*PlayerM*/[]
   ) { }
 
   ngOnInit(): void {
-    this.gameId = this.data.gameId;
+   // console.log(this.data.gameId);
+    //console.log(this.data);
+    //console.log(this.data.data.gameId)
+    this.gameId = this.data.data.gameId;
     this.loadOscar();
     this.loadMovie();
   }
@@ -83,14 +86,22 @@ export class ChoixOscarsComponent implements OnInit {
     this.getMovieSubscription = this.movieServ
     .getMovieByGameId()
     .subscribe(data => {
+      console.log(data);
+      //data.forEach(function(item){     
+        //console.log(this.gameId);
+        //console.log(item); 
+        //if(item.gameId == this.gameId){
+       //   this.movieTab.push(item)
+       // }
+    //   this.movieTab = data;
+     // });
       this.movieTab = data;
-    //  let toto: ActeurM[];
-      data.forEach(function(item){
-      //  toto.push(item.actors);
-        console.log(item);
+      console.log(data);
+      this.movieTab.forEach(function(item){   
+        console.log(this.actorsTab);
+        console.log(item.actors);   
         this.actorsTab.push(item.actors);
       });
-    //  this.actorsTab = toto;
       this.cdRef.markForCheck();
     })
   }
