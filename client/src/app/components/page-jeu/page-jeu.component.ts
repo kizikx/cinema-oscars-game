@@ -17,7 +17,7 @@ import { ChoixOscarsComponent } from '../choix-oscars/choix-oscars.component';
 })
 export class PageJeuComponent implements OnInit {
 
-  // public moviesChose: boolean = false;
+  public moviesChose: boolean = false;
   public votesOscar: boolean = false;
   public afficheResultat: boolean = false;
   public gameId : string;
@@ -50,7 +50,7 @@ export class PageJeuComponent implements OnInit {
       this.ajout = true;
       localStorage.setItem('ajout', this.gameId);
     }
-    // this.checkFilmChose();
+    this.checkFilmChose();
   }
 
   public ajoutOscars(){
@@ -118,12 +118,12 @@ export class PageJeuComponent implements OnInit {
     }
   }
 
-  // checkFilmChose() {
-  //   let monObjet = localStorage.getItem('filmChose');
-  //   if (monObjet == this.gameId) {
-  //     this.moviesChose = true;
-  //   }
-  // }
+  checkFilmChose() {
+    let monObjet = localStorage.getItem('filmChose');
+    if (monObjet == this.gameId) {
+      this.moviesChose = true;
+    }
+  }
 
   openDialog2(joueurChoix: PlayerM): void {
     let validate: boolean = false;
@@ -140,16 +140,16 @@ export class PageJeuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.loadJoueurs();
-      // let bool: boolean = true;
-      // this.joueurs.forEach(function (joueur) {
-      //   if (joueur.category.sent != true) {
-      //     bool = false;
-      //   }
-      // })
-      // if (bool == true) {
-      //   localStorage.setItem('filmChose', this.gameId);
-      // }
-      // this.moviesChose = bool;
+      let bool: boolean = true;
+      this.joueurs.forEach(function (joueur) {
+        if (joueur.category.sent != true) {
+          bool = false;
+        }
+      })
+      if (bool == true) {
+        localStorage.setItem('filmChose', this.gameId);
+      }
+      this.moviesChose = bool;
     });
   }
 
