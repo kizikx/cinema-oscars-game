@@ -52,13 +52,12 @@ export class ChoixJoueurComponent implements OnInit {
         this.cdRef.markForCheck();
       })
     this.data.category.sent = true;
-    this.updateVoteJoueur();
+    this.updateChoixJoueur();
     this.openSnackBar(this.filmLibreAjout.title+" et "+this.filmCategorie.title,"Choix des films");
   }
 
-  updateVoteJoueur(){
+  updateChoixJoueur(){
     this.playerServ.setPlayerId(this.joueurChoix._id);
-    this.joueurChoix.aVote = true;
     this.playerServ.patchPlayer(this.joueurChoix)
       .pipe().toPromise();
   }

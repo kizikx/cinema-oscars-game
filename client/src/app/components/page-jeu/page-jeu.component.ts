@@ -142,7 +142,7 @@ export class PageJeuComponent implements OnInit {
       this.loadJoueurs();
       let bool: boolean = true;
       this.joueurs.forEach(function (joueur) {
-        if (joueur.aVote != true) {
+        if (joueur.category.sent != true) {
           bool = false;
         }
       })

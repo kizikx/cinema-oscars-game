@@ -9,6 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActeurM } from 'src/app/shared/models/acteur-m';
 import { PlayerM } from '../../shared/models/player-m';
+import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
   selector: 'app-choix-oscars',
@@ -24,6 +25,7 @@ export class ChoixOscarsComponent implements OnInit {
   private oscars : OscarM[] = [];
   private oscarsOriginal: OscarM[] = [];
   public gameId: string;
+  public joueurChoix = new PlayerM();
 
   public ajoutOscarForm = new FormGroup({
     title : new FormControl(),
@@ -33,6 +35,7 @@ export class ChoixOscarsComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ChoixOscarsComponent>,
+    private readonly playerServ : PlayerService,
     private readonly movieServ : MovieService,
     private readonly oscarServ : OscarService,
     private readonly cdRef: ChangeDetectorRef,
@@ -42,7 +45,9 @@ export class ChoixOscarsComponent implements OnInit {
 
   ngOnInit(): void {
     this.gameId = this.data.gameId;
+    this.joueurChoix = this.data;
     this.oscarServ.setGameId(this.gameId);
+    this.playerServ.setGameId(this.gameId);
     this.loadOscar();
     this.loadMovie();
   }
@@ -64,7 +69,14 @@ export class ChoixOscarsComponent implements OnInit {
         .pipe().toPromise();
     });
     this.data.aVote = true;
+    this.updateVoteJoueur();
     this.onNoClick();
+  }
+
+  updateVoteJoueur(){
+    this.playerServ.setPlayerId(this.joueurChoix._id);
+    this.playerServ.patchPlayer(this.joueurChoix)
+      .pipe().toPromise();
   }
 
   public updateOscarTitle(title: string){
