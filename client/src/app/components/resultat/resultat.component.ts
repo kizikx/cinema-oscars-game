@@ -24,6 +24,7 @@ export class ResultatComponent implements OnInit {
   dataOscar: OscarM[] = [];
   winnerOscar: string[] = [];
   displayedColumns: string[] = ['name', 'winner'];
+  loaded: boolean = false;
 
   constructor( private _oscarservice: OscarService) { }
 
@@ -33,7 +34,7 @@ export class ResultatComponent implements OnInit {
   }
 
   getOscar() {
-    this._oscarservice!.getOscar()
+    this._oscarservice.getOscar()
       .pipe(
         map(data => {
           this.dataOscar = data;
@@ -45,8 +46,11 @@ export class ResultatComponent implements OnInit {
 
   countvote() {
     let votepersonne: VotePersonne[] = [];
+    console.log("Coucou")
     this.dataOscar.forEach(function (oscar) {
+      console.log(oscar)
       oscar.votes.forEach(function (label) {
+        console.log(label)
         if (votepersonne.length > 0) {
           let bool: boolean = false;
           let i = 0;
@@ -80,17 +84,22 @@ export class ResultatComponent implements OnInit {
 
         return 0;
       });
+      console.log(votepersonne[0].label);
       let res = votepersonne[0].label;
       if (votepersonne.length > 1) {
         for (let f = 1; f < votepersonne.length; f++) {
+          console.log(votepersonne[f].label);
           if (votepersonne[f].nombre == votepersonne[0].nombre) {
             res += " / " + votepersonne[f].label;
           }
         }
+        console.log("res" + res);
       }
       oscar.description = res;
       votepersonne = [];
+
     })
+    this.loaded = true;
   }
 
 
