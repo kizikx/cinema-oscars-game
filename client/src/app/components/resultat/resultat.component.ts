@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { OscarService } from 'src/app/services/oscar.service';
 import { PlayerService } from 'src/app/services/player.service';
-import { OscarM } from '../../../shared/models/oscar-m';
-import { VoteM } from '../../../shared/models/vote-m';
-import { PlayerM } from '../../../shared/models/player-m';
+import { OscarM } from '../../shared/models/oscar-m';
+import { VoteM } from '../../shared/models/vote-m';
+import { PlayerM } from '../../shared/models/player-m';
 import { map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -54,7 +54,7 @@ export class ResultatComponent implements OnInit {
             if (votepersonne[i].label == label) {
               votepersonne[i].nombre += 1;
               bool = true;
-            } 
+            }
           }
           if (bool == false) {
             votepersonne.push({
