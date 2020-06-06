@@ -27,7 +27,7 @@ module.exports = (app) => {
 
     app.get('/game/:gameId/movie', movieController.getMovies);
 
-    app.get('/game/:gameId/movieGame', movieController.getMoviesByGame);
+    app.get('/game/:gameId/moviegame', movieController.getMoviesByGame);
 
     app.get('/game/:gameId/movie/:movieId', movieController.getMovieById);
 

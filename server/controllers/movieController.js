@@ -54,25 +54,15 @@ module.exports.getMovieById = (req, res) => {
     });
 };
 
-// get a movie by id
-module.exports.getMoviesByGame = (req, res) => {
-    Movie.findOne(
-      {gameId:req.params.gameId})
+  //get all movies
+  module.exports.getMoviesByGame = (req, res) => {
+    Movie.find({gameId: req.params.gameId})
     .then(movie => {
-        if(!movie) {
-            return res.status(404).send({
-                message: "Movie not found with gameId " + req.params.gameId
-            });            
-        }
+        console.log(movie);
         res.send(movie);
     }).catch(err => {
-        if(err.kind === 'ObjectId') {
-            return res.status(404).send({
-                message: "Movie not found with gameId " + req.params.gameId
-            });                
-        }
-        return res.status(500).send({
-            message: "Error retrieving movie with gameId " + req.params.gameId
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving movies."
         });
     });
 };
