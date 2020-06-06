@@ -1,10 +1,18 @@
-<h1>Partie</h1>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Partie</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <div class="flex flex-center">
   <button mat-flat-button color="primary" (click)="openDialog()">Ajouter un joueur</button>
 </div>
 
-<h3>Joueurs</h3>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Joueur(s)</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-grid-list cols="2" rowHeight="2:1">
   <ng-container *ngFor="let joueur of joueurs">
     <!-- <ng-container *ngIf="joueur.choix == false"> -->

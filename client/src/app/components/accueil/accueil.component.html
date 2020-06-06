@@ -6,7 +6,11 @@
 <div class="flex flex-center">
     <button mat-flat-button color="primary" (click)="openDialog()">Creer une partie</button>
 </div>
-<h3>Parties :</h3>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Partie(s)</span>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-grid-list cols="4" rowHeight="4:1">
   <ng-container *ngFor="let game of games">
     <mat-grid-tile [routerLink]="['/pageJeu', game._id]">Partie : {{game.name}}</mat-grid-tile>
