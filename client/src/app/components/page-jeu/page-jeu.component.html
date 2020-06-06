@@ -20,7 +20,7 @@
     <mat-grid-tile *ngIf="moviesChose == true" (click)="openDialog3(joueur)">{{joueur.name}} (Voter pour les oscars)</mat-grid-tile>
   </ng-container>
 </mat-grid-list>
-<ng-container *ngIf="votesOscar == true">
+<ng-container *ngIf="verifChoix() == true">
   <div class="flex flex-center">
     <button mat-flat-button color="primary">Classement</button>
   </div>
