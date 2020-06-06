@@ -7,6 +7,7 @@ export class PlayerM implements PlayerI{
   gameId : string;
   category : CategorieM;
   aVote : boolean;
+  _id : string;
 
   constructor(fields?: Partial<PlayerM>){
     if (fields) {

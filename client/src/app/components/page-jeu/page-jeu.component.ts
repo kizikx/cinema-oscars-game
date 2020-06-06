@@ -44,7 +44,7 @@ export class PageJeuComponent implements OnInit {
     })
     this.loadJoueurs();
     this.checkFilmChose();
-    this.ajoutOscars;
+   // this.ajoutOscars();
   }
 
   public ajoutOscars(){

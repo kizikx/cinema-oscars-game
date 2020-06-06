@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MovieM } from 'src/app/shared/models/movie-m';
 import { MovieService } from 'src/app/services/movie.service';
+import { PlayerService } from 'src/app/services/player.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -17,10 +18,11 @@ export class ChoixJoueurComponent implements OnInit {
   private filmLibreAjout = new MovieM();
   private filmCategorie = new MovieM();
   private addMovieSubscription : Subscription;
-  public joueurChoix : PlayerM;
+  public joueurChoix = new PlayerM();
 
   constructor(
     private readonly movieServ : MovieService,
+    private readonly playerServ : PlayerService,
     private readonly cdRef : ChangeDetectorRef,
     public dialogRef: MatDialogRef<ChoixJoueurComponent>,
     private _snackBar: MatSnackBar,
@@ -34,6 +36,7 @@ export class ChoixJoueurComponent implements OnInit {
   public addMovie() {
     this.data.category.sent = true;
     this.movieServ.setGameId(this.data.gameId);
+    this.playerServ.setGameId(this.data.gameId);
     this.filmLibreAjout.gameId = this.data.gameId;
     this.filmCategorie.gameId = this.data.gameId;
     this.filmCategorie.category = this.data.category.name;
@@ -49,11 +52,15 @@ export class ChoixJoueurComponent implements OnInit {
         this.cdRef.markForCheck();
       })
     this.data.category.sent = true;
+    this.updateVoteJoueur();
     this.openSnackBar(this.filmLibreAjout.title+" et "+this.filmCategorie.title,"Choix des films");
   }
 
   updateVoteJoueur(){
-    this.joueurChoix.setVote();
+   // this.joueurChoix.setVote();
+   this.playerServ.setPlayerId(this.joueurChoix._id)
+    this.joueurChoix.aVote = true;
+    this.playerServ.patchPlayer(this.joueurChoix);
   }
 
   onNoClick(): void {
