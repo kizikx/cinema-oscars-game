@@ -41,7 +41,6 @@ export class PlayerService {
 
   public patchPlayer(player : PlayerM): Observable<PlayerM>{
     this.route = Routes.getApiRoute(Routes.game, this.gameId, Routes.extensionPlayer, this.playerId);
-    console.log(this.route);
     return this.http.patch<PlayerM>(this.route, player, this.httpOptions)
     .pipe(
       map(item => new PlayerM(item))

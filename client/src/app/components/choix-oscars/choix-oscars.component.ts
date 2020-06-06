@@ -43,7 +43,6 @@ export class ChoixOscarsComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.data.gameId;
     this.oscarServ.setGameId(this.gameId);
-    this.oscarServ.setOscarId(this.data._id);
     this.loadOscar();
     this.loadMovie();
   }
@@ -60,6 +59,7 @@ export class ChoixOscarsComponent implements OnInit {
 
   public updateOscars(){
     this.oscars.forEach(oscar => {
+      this.oscarServ.setOscarId(oscar._id);
       this.oscarServ.patchOscar(oscar);
     });
     this.data.aVote = true;
