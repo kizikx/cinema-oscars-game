@@ -58,10 +58,6 @@ export class AjoutGameComponent implements OnInit {
     this.categories.push(categorieAjout);
   }
 
-  public supprimerCategories(){
-    //TODO Supprimer les categories ajoutees
-  }
-
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
