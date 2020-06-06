@@ -26,15 +26,15 @@ export class ResultatComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOscar();
-    this.countvote();
   }
 
   getOscar() {
     this._oscarservice.setGameId(this.gameId);
-    this._oscarservice!.getOscar()
+    this._oscarservice.getOscar()
       .pipe(
         map(data => {
           this.dataOscar = data;
+          this.countvote();
         }),
         catchError((err) => {
           return of([]);
