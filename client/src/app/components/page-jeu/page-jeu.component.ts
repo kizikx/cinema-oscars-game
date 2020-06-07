@@ -108,13 +108,23 @@ export class PageJeuComponent implements OnInit {
       .subscribe(data => {
         this.joueurs = data;
         this.cdRef2.markForCheck();
-        let bool: boolean = true;
+        if(this.joueurs.length > 0){
+        let boolVote: boolean = true;
+        let boolChoix: boolean = true;
         this.joueurs.forEach(function (joueur) {
-        if (joueur.aVote != true) {
-          bool = false;
+          if (joueur.aVote != true) {
+            boolVote = false;
+          }
+          if (joueur.categories.sent != true) {
+            boolChoix = false;
+          }
+        })
+          if (boolChoix == true) {
+            localStorage.setItem('filmChose', this.gameId);
+          }
+          this.votesOscar = boolVote;
+          this.moviesChose = boolChoix;
         }
-      })
-      this.votesOscar = bool;
       })
   }
 
@@ -147,16 +157,6 @@ export class PageJeuComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.loadJoueurs();
-      let bool: boolean = true;
-      this.joueurs.forEach(function (joueur) {
-        if (joueur.categories.sent != true) {
-          bool = false;
-        }
-      })
-      if (bool == true) {
-        localStorage.setItem('filmChose', this.gameId);
-      }
-      this.moviesChose = bool;
     });
   }
 
